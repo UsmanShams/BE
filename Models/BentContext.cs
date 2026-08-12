@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using be.Models;
 
 namespace be.Models;
@@ -73,7 +74,24 @@ public partial class BentContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=check_bent;Trusted_Connection=True; TrustServerCertificate=true;");
+            var config = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json", optional: true)
+                .AddEnvironmentVariables()
+                .Build();
+
+            var connectionString = config.GetConnectionString("DefaultConnection")
+                ?? Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
+                ?? "Server=localhost;Database=bent;User=root;Password=root;";
+
+            try
+            {
+                optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            }
+            catch
+            {
+                optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 30)));
+            }
         }
     }
 
