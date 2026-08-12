@@ -8,6 +8,8 @@ services:
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
+      - key: DOTNET_USE_POLLING_FILE_WATCHER
+        value: "true"
       - key: ConnectionStrings__DefaultConnection
         value: Server=mysql-db;Port=3306;Database=bent;User=bent_user;Password=bent_password_123;
 
