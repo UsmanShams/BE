@@ -537,3 +537,11 @@ C:\Users\123\source\repos\be\be\obj\Debug\net6.0\ref\be.dll
 C:\Users\123\source\repos\be\be\obj\Debug\net6.0\be.sourcelink.json
 C:\Users\123\source\repos\be\be\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\123\source\repos\be\be\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\publish_test\web.config
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\publish_test\appsettings.Development.json
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\publish_test\appsettings.json
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\publish_test\be.deps.json
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\publish_test\be.runtimeconfig.json
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\publish_test\be.staticwebassets.endpoints.json
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\publish_test\wwwroot\front\package-lock.json
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\publish_test\wwwroot\front\package.json

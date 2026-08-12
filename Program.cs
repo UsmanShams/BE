@@ -29,6 +29,20 @@ builder.Services.AddDbContext<BentContext>(options =>
 });
 var app = builder.Build();
 
+// Auto-create database tables if they do not exist in MySQL
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var db = scope.ServiceProvider.GetRequiredService<BentContext>();
+        db.Database.EnsureCreated();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Database auto-creation log: " + ex.Message);
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
