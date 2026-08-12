@@ -3,11 +3,30 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrEmpty(port))
+{
+    builder.WebHost.UseUrls($"http://*:{port}");
+}
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? "Server=localhost;Database=bent;User=root;Password=root;";
+
 builder.Services.AddDbContext<BentContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    // Try to auto-detect MySQL version, fallback to 8.0 if connection cannot be established at startup
+    try
+    {
+        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+    }
+    catch
+    {
+        options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 30)));
+    }
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -534,3 +534,6 @@ C:\Users\123\source\repos\be\be\obj\Debug\net6.0\refint\be.dll
 C:\Users\123\source\repos\be\be\obj\Debug\net6.0\be.pdb
 C:\Users\123\source\repos\be\be\obj\Debug\net6.0\be.genruntimeconfig.cache
 C:\Users\123\source\repos\be\be\obj\Debug\net6.0\ref\be.dll
+C:\Users\123\source\repos\be\be\obj\Debug\net6.0\be.sourcelink.json
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\MySqlConnector.dll
+C:\Users\123\source\repos\be\be\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll

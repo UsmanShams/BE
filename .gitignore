@@ -1,25 +1,32 @@
-# Build results
+## Build outputs & binaries
 [Bb]in/
 [Ob]j/
 [LGs]og/
 [LGs]ogs/
+publish/
+publish_test/
+*.dll
+*.exe
+*.pdb
 
-# Visual Studio / VS Code IDE settings
+## Visual Studio & IDE settings
 .vs/
 .vscode/
+.idea/
 *.user
 *.userosscache
 *.sln.docstates
+*.suo
+*.userprefs
 
-# User-specific configuration
+## User-specific & local configuration
 .config/
-
-# Environment settings containing sensitive keys or secrets
 appsettings.Development.json
 appsettings.Local.json
 appsettings.Production.json
 *.secrets.json
 
-# OS-generated files
+## OS generated files
 .DS_Store
 Thumbs.db
+desktop.ini

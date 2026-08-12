@@ -527,10 +527,12 @@ C:\Users\123\source\repos\be\be\obj\Release\net6.0\staticwebassets.build.json.ca
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\staticwebassets.development.json
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\staticwebassets.build.endpoints.json
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\swae.build.ex.cache
-C:\Users\123\source\repos\be\be\obj\Release\net6.0\staticwebassets.upToDateCheck.txt
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\be.csproj.Up2Date
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\be.dll
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\refint\be.dll
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\be.pdb
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\be.genruntimeconfig.cache
 C:\Users\123\source\repos\be\be\obj\Release\net6.0\ref\be.dll
+C:\Users\123\source\repos\be\be\bin\Release\net6.0\MySqlConnector.dll
+C:\Users\123\source\repos\be\be\bin\Release\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\123\source\repos\be\be\obj\Release\net6.0\be.sourcelink.json

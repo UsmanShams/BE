@@ -1,0 +1,32 @@
+services:
+  # ASP.NET Core Web Service
+  - type: web
+    name: be-web
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__DefaultConnection
+        value: Server=mysql-db;Port=3306;Database=bent;User=bent_user;Password=bent_password_123;
+
+  # MySQL Database Private Service
+  - type: pserv
+    name: mysql-db
+    runtime: image
+    image:
+      url: docker.io/library/mysql:8.0
+    disk:
+      name: mysql-data
+      mountPath: /var/lib/mysql
+      sizeGB: 1
+    envVars:
+      - key: MYSQL_DATABASE
+        value: bent
+      - key: MYSQL_USER
+        value: bent_user
+      - key: MYSQL_PASSWORD
+        value: bent_password_123
+      - key: MYSQL_ROOT_PASSWORD
+        value: root_password_123

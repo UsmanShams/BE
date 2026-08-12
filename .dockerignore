@@ -1,0 +1,9 @@
+.vs/
+.git/
+.gitignore
+.dockerignore
+Dockerfile
+render.yaml
+bin/
+obj/
+*.user

@@ -211,6 +211,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxkYXNfb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/123/source/repos/be/be/Views/edit/drumopendate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxkcnVtb3BlbmRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/123/source/repos/be/be/Views/edit/followup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxmb2xsb3d1cC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -237,6 +241,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/123/source/repos/be/be/Views/edit/product.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxwcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/ps.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxwcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/ss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/123/source/repos/be/be/Views/edit/user.cshtml]
@@ -379,6 +391,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY2wxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/123/source/repos/be/be/Views/front/cl_search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY2xfc2VhcmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/123/source/repos/be/be/Views/front/customer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY3VzdG9tZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -433,6 +449,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/123/source/repos/be/be/Views/front/mcr.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcbWNyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/mcr_search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcbWNyX3NlYXJjaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/123/source/repos/be/be/Views/front/orno.cshtml]
