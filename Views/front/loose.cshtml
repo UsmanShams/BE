@@ -1,0 +1,83 @@
+﻿@model IEnumerable<be.Models.Product>
+
+@{
+    ViewData["Title"] = "product";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="loose_drum" >Open Drum</a>
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="loose_drum_manual" >Add Loose Ltrs</a>
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Loose Product</h4>
+            <table class="table table-hover">
+                @{
+                    if (TempData.ContainsKey("mess"))
+                    {
+                        <span class="text-danger">@TempData["mess"]</span>
+                    }
+                }
+                <thead>
+                    <tr>
+                        <th>
+                            Code
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Remaining
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PCode)
+                            </td>
+                            <td>
+                                <a asp-action="looseledger" asp-controller="front" asp-route-id="@item.PId">
+                                    @Html.DisplayFor(modelItem => item.PName)
+                                </a>
+                            </td>
+                            @{
+                                BentContext db = new BentContext();
+                                var x = db.looseledger.Any(x => x.Description == Convert.ToString(item.PId));
+                                if(x is true)
+                                {
+
+                                    var x1 = db.looseledger.Where(x => x.Description == Convert.ToString(item.PId)).ToList();
+                                    var bb = 0;
+                                    foreach(var item1 in x1)
+                                    {
+                                        bb = Convert.ToInt32(bb + item1.lIn - item1.lOut);
+                                    }
+                                    <td>@bb</td>
+                                }
+                                else
+                                {
+                                    <td>0</td>
+                                }
+                            }
+                            <td><a class="btn btn-primary btn-rounded btn-fw" asp-controller="edit" asp-route-id="@item.PId" asp-action="undo_loose_drum">Undo</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,199 @@
+﻿@model IEnumerable<be.Models.looseledger>
+
+@{
+    ViewData["Title"] = "looseledger";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<style>
+    .product-link {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 2px;
+        color: #b91c1c;
+        text-decoration: none !important;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+        .product-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #b91c1c;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .product-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .product-link svg {
+            flex-shrink: 0;
+        }
+</style>
+<div class="container">
+    <div class="container">
+        <div class="container">
+            <a asp-controller="front" asp-action="loose" class="product-link">
+                Back To Loose
+            </a>
+            <br />
+            <br />
+            <a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="loose_order" asp-route-id="@ViewBag.id">Order</a>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Loose Product</h2>
+            <h3 class="card-title">@ViewBag.name</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Order #</td>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.time)
+                        </th>
+                        <th>
+                            Customer Name
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Qty)
+                        </th>
+                        <th>
+                            In
+                        </th>
+                        <th>
+                            Out
+                        </th>
+                        <th>
+                            Balance
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>Loose-BE-@item.LId</td>
+                            @{
+                                if (item.month == 1)
+                                {
+                                    <td>@item.day-Jan-@item.year</td>
+                                }
+                                else if (item.month == 2)
+                                {
+                                    <td>@item.day-Feb-@item.year</td>
+                                }
+                                else if (item.month == 3)
+                                {
+                                    <td>@item.day-Mar-@item.year</td>
+                                }
+                                else if (item.month == 4)
+                                {
+                                    <td>@item.day-Apr-@item.year</td>
+                                }
+                                else if (item.month == 5)
+                                {
+                                    <td>@item.day-May-@item.year</td>
+                                }
+                                else if (item.month == 6)
+                                {
+                                    <td>@item.day-Jun-@item.year</td>
+                                }
+                                else if (item.month == 7)
+                                {
+                                    <td>@item.day-Jul-@item.year</td>
+                                }
+                                else if (item.month == 8)
+                                {
+                                    <td>@item.day-Aug-@item.year</td>
+                                }
+                                else if (item.month == 9)
+                                {
+                                    <td>@item.day-Sep-@item.year</td>
+                                }
+                                else if (item.month == 10)
+                                {
+                                    <td>@item.day-Oct-@item.year</td>
+                                }
+                                else if (item.month == 11)
+                                {
+                                    <td>@item.day-Nov-@item.year</td>
+                                }
+                                else if (item.month == 12)
+                                {
+                                    <td>@item.day-Dec-@item.year</td>
+                                }
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.time)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Qty)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.lIn)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.lOut)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.lBalance)
+                            </td>
+                            @{
+                                if ( item.type == "Pail_add")
+                                {
+                                    <td>
+                                        <a asp-action="loose_det_add" asp-controller="edit" asp-route-loose_id="@item.LId" asp-route-id="@item.Description">Edit</a> |
+                                        <a asp-action="loose_det_add" asp-controller="del" asp-route-loose_id="@item.LId" asp-route-id="@item.Description">Delete</a> |
+                                        <a asp-action="drumopendate" asp-controller="edit" asp-route-loose_id="@item.LId">Edit Date</a>
+                                    </td>
+                                }
+                                else if (item.CName == "Bilal Assosiate")
+                                {
+                                    <td>
+                                        <a asp-action="drumopendate" asp-controller="edit" asp-route-loose_id="@item.LId">Edit Date</a> 
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a asp-action="loose_det" asp-controller="edit" asp-route-loose_id="@item.LId" asp-route-id="@item.Description">Edit</a> |
+                                        <a asp-action="loose_det" asp-controller="del" asp-route-loose_id="@item.LId" asp-route-id="@item.Description">Delete</a>
+                                    </td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

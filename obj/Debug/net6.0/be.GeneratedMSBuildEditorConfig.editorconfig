@@ -1,0 +1,560 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EntryPointFilePath = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = be
+build_property.RootNamespace = be
+build_property.ProjectDir = C:\Users\123\source\repos\be\be\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\123\source\repos\be\be
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 6.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/123/source/repos/be/be/Views/add/banktrans.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGJhbmt0cmFucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/bank_detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGJhbmtfZGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/bank_statement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGJhbmtfc3RhdGVtZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/Cheque.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXENoZXF1ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/cheq_pay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGNoZXFfcGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/cl_close.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGNsX2Nsb3NlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/customer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGN1c3RvbWVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/cus_pro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGN1c19wcm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/das.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGRhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/del_challan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGRlbF9jaGFsbGFuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/det_order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGRldF9vcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/det_po.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGRldF9wby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/followup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGZvbGxvd3VwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/grn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGdybi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/loose_drum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGxvb3NlX2RydW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/loose_drum_manual.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGxvb3NlX2RydW1fbWFudWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/loose_order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXGxvb3NlX29yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXG9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/order_pro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXG9yZGVyX3Byby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/pay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHBheS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHBheW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/po.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHBvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/po1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHBvMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHByb2R1Y3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/ps1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHBzMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/search_dp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHNlYXJjaF9kcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/search_pending.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHNlYXJjaF9wZW5kaW5nLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/search_ps.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHNlYXJjaF9wcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/search_ss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHNlYXJjaF9zcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/ss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/ss1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHNzMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/user.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/vendor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHZlbmRvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/add/vl_close.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcYWRkXHZsX2Nsb3NlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/det/del_challan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0XGRlbF9jaGFsbGFuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/det/del_recipt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0XGRlbF9yZWNpcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/det/invoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0XGludm9pY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/det/order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0XG9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/det/po.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0XHBvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/det/po_recipt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZGV0XHBvX3JlY2lwdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/bank_detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxiYW5rX2RldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/bank_statement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxiYW5rX3N0YXRlbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/cheque.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxjaGVxdWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/customer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxjdXN0b21lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/cus_pro_price.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxjdXNfcHJvX3ByaWNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/das.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxkYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/das_out.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxkYXNfb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/drumopendate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxkcnVtb3BlbmRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/followup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxmb2xsb3d1cC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/loose_det.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxsb29zZV9kZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/loose_det_add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxsb29zZV9kZXRfYWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/online_pay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxvbmxpbmVfcGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxvcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/po.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxwby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxwcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/ps.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxwcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/ss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFxzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/user.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFx1c2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/edit/vendor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZWRpdFx2ZW5kb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ad_vl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFkX3ZsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_cl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX2NsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_cl1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX2NsMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_das.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX2Rhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_das1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX2RhczEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_pl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3BsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_pl1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3BsMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_ps.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3BzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_ps2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3BzMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_ss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3NzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_ss1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3NzMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_ss2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3NzMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_vl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3ZsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ag_vl1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGFnX3ZsMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/cl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGNsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/cl1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGNsMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/das.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGRhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/das1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXGRhczEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/pl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXHBsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/pl1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXHBsMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ps.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXHBzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ps1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXHBzMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXHNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/ss1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXHNzMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/vl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXHZsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/filter/vl1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZmlsdGVyXHZsMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/ann_sum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcYW5uX3N1bS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/ann_sum1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcYW5uX3N1bTEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/bank_statement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcYmFua19zdGF0ZW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/bd_ledger.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcYmRfbGVkZ2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/cheque.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY2hlcXVlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/cl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY2wuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/cl1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY2wxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/cl_search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY2xfc2VhcmNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/customer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY3VzdG9tZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/cus_sum.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY3VzX3N1bS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/cus_sum1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcY3VzX3N1bTEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/das.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcZGFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/dash.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcZGFzaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/dash1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcZGFzaDEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/das_pay.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcZGFzX3BheS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/del_challan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcZGVsX2NoYWxsYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/followup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcZm9sbG93dXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/grn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcZ3JuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/loose.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcbG9vc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/looseledger.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcbG9vc2VsZWRnZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/mcr.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcbWNyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/mcr_search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcbWNyX3NlYXJjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/orno.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcb3Juby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRccGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/pending.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRccGVuZGluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/pl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRccGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/po.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRccG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/pro1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRccHJvMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/product.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRccHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/ps.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRccHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/s1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcczEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/signin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcc2lnbmluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/sl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcc2wuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/ss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/ss_pending.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcc3NfcGVuZGluZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/stock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcc3RvY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/user.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcdXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/vendor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcdmVuZG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/vl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcdmwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/front/vl1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcZnJvbnRcdmwxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/Shared/home.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXGhvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/123/source/repos/be/be/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ho45jwz5e6

@@ -1,0 +1,164 @@
+﻿@model IEnumerable<be.Models.Customerledger>
+
+@{
+    ViewData["Title"] = "cl1";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="cl_close" asp-route-id="@ViewBag.iid">Add Closing</a>
+<br />
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="filter" asp-action="ag_cl" asp-route-id="@ViewBag.iid">Aging</a>
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Customer Ledger</h2>
+            <h3 style="color:black;">@ViewBag.id</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Order #
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Time
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Qty)
+                        </th>
+                        <th>
+                            Credit
+                        </th>
+                        <th>
+                            Debit
+                        </th>
+                        <th>
+                            Balance
+                        </th>
+                        <th>
+                            Type
+                        </th>
+                    </tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Orderid)
+                            </td>
+                        @{
+                            if (item.month == 1)
+                            {
+                                <td>@item.day-Jan-@item.year</td>
+                            }
+                            else if (item.month == 2)
+                            {
+                                <td>@item.day-Feb-@item.year</td>
+                            }
+                            else if (item.month == 3)
+                            {
+                                <td>@item.day-Mar-@item.year</td>
+                            }
+                            else if (item.month == 4)
+                            {
+                                <td>@item.day-Apr-@item.year</td>
+                            }
+                            else if (item.month == 5)
+                            {
+                                <td>@item.day-May-@item.year</td>
+                            }
+                            else if (item.month == 6)
+                            {
+                                <td>@item.day-Jun-@item.year</td>
+                            }
+                            else if (item.month == 7)
+                            {
+                                <td>@item.day-Jul-@item.year</td>
+                            }
+                            else if (item.month == 8)
+                            {
+                                <td>@item.day-Aug-@item.year</td>
+                            }
+                            else if (item.month == 9)
+                            {
+                                <td>@item.day-Sep-@item.year</td>
+                            }
+                            else if (item.month == 10)
+                            {
+                                <td>@item.day-Oct-@item.year</td>
+                            }
+                            else if (item.month == 11)
+                            {
+                                <td>@item.day-Nov-@item.year</td>
+                            }
+                            else if (item.month == 12)
+                            {
+                                <td>@item.day-Dec-@item.year</td>
+                            }
+                        }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.time)
+                            </td>@{
+                                if (item.type == "Drum" || item.type == "Druml" || item.type == "Pail")
+                                {
+                                    BentContext db = new BentContext();
+                                    var x = db.Products.Where(x => x.PId == Convert.ToInt32(item.Description)).First();
+                                    <td>@x.PName</td>
+                                }
+                                else
+                                {
+                                    <td>@item.Description</td>
+                                }
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Qty)
+                            </td>@if (item.ClIn == 0)
+                            {
+                                <td>-</td>
+                            }
+                            else
+                            {
+                                <td>@item.ClIn</td>
+                            }
+                            @if (item.ClOut == 0)
+                            {
+                                <td>-</td>
+                            }
+                            else
+                            {
+                                <td>@item.ClOut</td>
+                            }
+                            @{
+                                if (item.ClBalance < 0)
+                                {
+                                    var x = item.ClBalance * -1;
+                                    <td>(@x)</td>
+                                }
+                                else
+                                {
+                                    <td>@item.ClBalance</td>
+                                }
+                            }
+                            @if (@item.type == "Drum")
+                            {
+                                <td>Supply</td>
+                            }
+                            else
+                            {
+                               <td>@item.type</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewData["Title"] = "Cheque";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Transfer From Bank To Bank</h1>
+            <br />
+            <form asp-controller="add" asp-action="banktrans">
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Bank From</label>
+                    <div class="col-sm-9">
+                        <select name="bank1" class="form-control" required>
+                            @{
+                                BentContext db1 = new BentContext();
+                                var x1 = db1.Bankstatements.ToList();
+                                foreach (var item in x1)
+                                {
+                                    <option value="@item.BsId">@item.Bankname</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Bank To</label>
+                    <div class="col-sm-9">
+                        <select name="bank2" class="form-control" required>
+                            @{
+                                var x2 = db1.Bankstatements.ToList();
+                                foreach (var item in x2)
+                                {
+                                    <option value="@item.BsId">@item.Bankname</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Amount</label>
+                    <div class="col-sm-9">
+                        <input name="amount" class="form-control" placeholder="Enter Amount" />
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

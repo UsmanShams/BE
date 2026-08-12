@@ -1,0 +1,57 @@
+﻿@model be.Models.Customer
+
+@{
+    ViewData["Title"] = "customer";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Update Customer</h4>
+            <form class="forms-sample" asp-controller="edit" asp-action="customer">
+                <input type="hidden" asp-for="CId" />
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Customer Name</label>
+                    <div class="col-sm-9">
+                        <input asp-for="CName" class="form-control" placeholder="Enter Name" required/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input asp-for="CEmail" class="form-control" placeholder="Enter Email" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Phone</label>
+                    <div class="col-sm-9">
+                        <input asp-for="CPhone" class="form-control" placeholder="Enter Phone" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Address</label>
+                    <div class="col-sm-9">
+                        <input asp-for="CAddress" class="form-control" placeholder="Enter Address" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Authorized Person</label>
+                    <div class="col-sm-9">
+                        <input asp-for="auth_per" class="form-control" placeholder="Enter Authorized Person" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Status</label>
+                    <div class="col-sm-9">
+                        <select asp-for="CStatus" class="form-control" >
+                            <option value="Active">Active</option>
+                            <option value="In Active">In Active</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

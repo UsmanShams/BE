@@ -1,0 +1,48 @@
+﻿@model IEnumerable<be.Models.Customer>
+
+@{
+    ViewData["Title"] = "customer";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="front" asp-action="cl_search">Search</a>
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Customer's Name</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Customer Name
+                        </th>
+                        <th>
+                            Ledger
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="front" asp-action="cl1" asp-route-id="@item.CId"> @item.CName</a>
+                            </td>
+                            <td>
+                                <a asp-action="cl" asp-controller="filter" asp-route-id="@item.CId"><i class="fa-solid fa-print"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+﻿@model IEnumerable<be.Models.PoNo>
+
+@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+<br />
+    <a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="po1">Add Purchase Order</a>
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Purchase Order Table</h4>
+            <table class="table table-hover">
+                @{
+                    if (TempData.ContainsKey("mess"))
+                    {
+                        <span class="text-danger">@TempData["mess"]</span>
+                    }
+                }
+                <thead>
+                <tr>
+                    <th>
+                        Purchase Order #
+                    </th>
+                    <th>Vendor</th>
+                    <th>Action</th>
+                    <th>Status</th>
+                    <th>Recipt</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                        
+                        var iid = item.PonoId + 492;
+                        
+                        <tr>
+                        <td>
+                                BE-@iid
+                        </td>
+                            @{
+                                BentContext db = new BentContext();
+
+                                var x1 = db.Venders.Any(x => x.VId == Convert.ToInt32(item.Vendor));
+                                if(x1 is true)
+                                {
+                                    var x = db.Venders.Where(x => x.VId == Convert.ToInt32(item.Vendor)).First();
+                                    <td>@x.VName</td>
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+
+                            }
+                            <td>
+                                @{
+                                    var r = db.Pos.Any(x => x.PoUnique == item.PonoId);
+                                    // if (r is true)
+                                    // {
+
+                                    <a asp-action="po" asp-controller="det" asp-route-id="@item.PonoId">Details</a>
+                                    // }
+                                    if (item.PonoStatus == "no")
+                                    { 
+                                        <a asp-action="po" asp-controller="del" asp-route-id="@item.PonoId">Delete</a>
+                                    }
+                                }
+                        </td>
+                            @{
+                                if (item.PonoStatus == "no"){
+                                    if(r is true)
+                                    {
+                                        <td><a class="btn btn-danger" asp-controller="add" asp-route-id="@item.PonoId" asp-action="grn">Recieved ?</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td>No Items</td>
+                                    }
+                                }
+                                else{
+                                    <td>Recieved</td>
+                                }
+                                if(r is true)
+                                {
+
+                                    <td>
+                                        <a asp-action="po_recipt" asp-controller="det" asp-route-id="@item.PonoId">  <i class="fa-solid fa-print"></i></a>
+                                    </td>
+                                }
+                                if (item.PonoStatus == "yes")
+                                {
+                                    var x = db.StockPrice.Where(x => x.Pono == item.PonoId).ToList();
+                                    var count = 0;
+                                    foreach(var item1 in x)
+                                    {
+                                        if(item1.Status != "active")
+                                        {
+                                            count += 1;
+                                        }
+                                    }
+                                    if (count == 0)
+                                    {
+                                        <td><a class="btn btn-primary" asp-controller="edit" asp-route-id="@item.PonoId" asp-action="undo_po">Undo</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td>Undo Not Available</td>
+                                    }
+
+                                }
+                                else
+                                {
+                                    <td>--</td>
+                                }
+                            }
+                    </tr>
+                }
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>

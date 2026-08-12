@@ -1,0 +1,41 @@
+﻿@model be.Models.Bankstatement
+
+@{
+    ViewData["Title"] = "bank_statemnet";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Update Bank Statement</h4>
+            <form class="forms-sample" asp-controller="edit" asp-action="bank_statement">
+                <input type="hidden" asp-for="BsId" />
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Bank Name</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Bankname" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Account Number</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Accountno" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Account Title</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Accounttitle" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Balance</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Balance" class="form-control" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

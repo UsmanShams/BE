@@ -1,0 +1,36 @@
+﻿@model be.Models.Pay
+@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Edit Online Payment</h4>
+            <form class="forms-sample" asp-controller="edit" asp-action="online_pay">
+                @{
+                    if (TempData.ContainsKey("mess"))
+                    {
+                        <span class="text-danger">@TempData["mess"]</span>
+                    }
+                }
+
+                <input name="loose_id" type="hidden" value="@ViewBag.id" class="form-control" required></input>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Change Amount</label>
+                    <div class="col-sm-9">
+                        <input asp-for="PAmount" name="amount" class="form-control" required></input>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Change Date</label>
+                    <div class="col-sm-9">
+                        <input name="date"type="date" value="@ViewBag.date" class="form-control" required></input>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2" >Add</button>
+            </form>
+        </div>
+    </div>
+</div>

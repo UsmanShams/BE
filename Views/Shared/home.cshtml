@@ -1,0 +1,582 @@
+﻿~/front//assets//images//bilal_logo.jpg
+@{
+    if (Context.Session.GetString("name") == null)
+    {
+        <script>
+            // Redirect to a specific URL after the page loads
+            window.location.href = '@Url.Action("signin", "front")';
+        </script>
+    }
+
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Bilal Enterprises</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/front/assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/front/assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/front/assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/front/assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/front/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles
+    <!-- End layout styles -->
+    <link rel="stylesheet" href="~/front/assets/css/style.css">
+    <link rel="shortcut icon" href="~/front/assets/images/favicon.png" />
+    <!-- Bilal Enterprises brand theme (logo colors) -->
+    <style>
+        :root {
+            --be-red: #c8281f;
+            --be-red-deep: #a01a13;
+            --be-orange: #e87b18;
+            --be-orange-soft: #f0922e;
+            --be-ink: #1a1614;
+        }
+
+        /* ===== Brand logo ===== */
+        .navbar .navbar-brand-wrapper .navbar-brand.brand-logo .be-brand-img {
+            height: 10vh;
+            width: 100% !important;
+            max-width: 280px;
+            background: transparent;
+            padding: 4px 8px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini .be-brand-img-mini {
+            height: 46px;
+            width: auto;
+            background: transparent;
+            padding: 3px;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        /* ===== Top navbar ===== */
+        .navbar.default-layout-navbar {
+            background: linear-gradient(135deg, var(--be-red) 0%, var(--be-red-deep) 100%) !important;
+            box-shadow: 0 2px 12px rgba(160, 26, 19, 0.25);
+        }
+
+        .navbar .navbar-brand-wrapper {
+            background: #ffffff !important;
+        }
+
+            .navbar .navbar-brand-wrapper .navbar-brand h2 {
+                color: #ffffff !important;
+                font-weight: 800;
+                letter-spacing: -0.5px;
+                margin: 0;
+            }
+
+        .navbar .navbar-menu-wrapper {
+            background: linear-gradient(135deg, var(--be-red) 0%, var(--be-red-deep) 100%) !important;
+        }
+
+            .navbar .navbar-menu-wrapper .navbar-toggler,
+            .navbar .navbar-menu-wrapper .navbar-toggler .mdi {
+                color: #ffffff !important;
+            }
+
+            .navbar .navbar-menu-wrapper .search-field .input-group-text,
+            .navbar .navbar-menu-wrapper .search-field .form-control,
+            .navbar .navbar-menu-wrapper .search-field .form-control::placeholder {
+                color: rgba(255, 255, 255, 0.85) !important;
+            }
+
+            .navbar .navbar-menu-wrapper .navbar-nav .nav-profile-text p,
+            .navbar .navbar-menu-wrapper .navbar-nav .nav-link {
+                color: #ffffff !important;
+            }
+
+        .navbar .navbar-nav .nav-profile .nav-link .nav-profile-text p.text-black {
+            color: #ffffff !important;
+        }
+
+        /* ===== Sidebar ===== */
+        .sidebar,
+        .sidebar .nav,
+        .sidebar .nav .nav-item,
+        .sidebar.sidebar-offcanvas {
+            background: #ffffff !important;
+            border-right: 1px solid #f0e2dc;
+        }
+
+            .sidebar .nav .nav-item.nav-category {
+                color: var(--be-red);
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+
+            .sidebar .nav .nav-item .nav-link {
+                color: var(--be-ink);
+            }
+
+                .sidebar .nav .nav-item .nav-link .menu-title,
+                .sidebar .nav .nav-item .nav-link i.menu-icon,
+                .sidebar .nav .nav-item .nav-link i.menu-arrow {
+                    color: var(--be-ink);
+                }
+
+                .sidebar .nav .nav-item .nav-link .icon-bg {
+                    background: rgba(232, 123, 24, 0.14);
+                    border-radius: 8px;
+                }
+
+                    .sidebar .nav .nav-item .nav-link .icon-bg i {
+                        color: var(--be-orange) !important;
+                    }
+
+                .sidebar .nav .nav-item:hover > .nav-link,
+                .sidebar .nav .nav-item .nav-link:hover,
+                .sidebar .nav .nav-item.active .nav-link:hover,
+                .sidebar .nav .nav-item:hover > .nav-link *,
+                .sidebar .nav .nav-item .nav-link:hover * {
+                    background-color: transparent;
+                    color: #ffffff !important;
+                }
+
+                .sidebar .nav .nav-item:hover > .nav-link,
+                .sidebar .nav .nav-item .nav-link:hover,
+                .sidebar .nav .nav-item.active .nav-link:hover {
+                    background: var(--be-red) !important;
+                }
+
+                    .sidebar .nav .nav-item:hover > .nav-link .menu-title,
+                    .sidebar .nav .nav-item .nav-link:hover .menu-title,
+                    .sidebar .nav .nav-item:hover > .nav-link i,
+                    .sidebar .nav .nav-item .nav-link:hover i,
+                    .sidebar .nav .nav-item .nav-link:hover i.menu-icon,
+                    .sidebar .nav .nav-item .nav-link:hover i.menu-arrow,
+                    .sidebar .nav .nav-item .nav-link:hover .icon-bg i,
+                    .sidebar .nav .nav-item .nav-link:hover span {
+                        color: #ffffff !important;
+                    }
+
+                    .sidebar .nav .nav-item .nav-link:hover .icon-bg {
+                        background: rgba(255, 255, 255, 0.18) !important;
+                    }
+
+                /* ===== Open / expanded collapsible menu (remove dark blue) ===== */
+                .sidebar .nav .nav-item .nav-link[aria-expanded="true"] {
+                    background: #ffffff !important;
+                    color: var(--be-red) !important;
+                }
+
+                    .sidebar .nav .nav-item .nav-link[aria-expanded="true"] .menu-title,
+                    .sidebar .nav .nav-item .nav-link[aria-expanded="true"] i,
+                    .sidebar .nav .nav-item .nav-link[aria-expanded="true"] i.menu-icon,
+                    .sidebar .nav .nav-item .nav-link[aria-expanded="true"] i.menu-arrow,
+                    .sidebar .nav .nav-item .nav-link[aria-expanded="true"] .icon-bg i {
+                        color: var(--be-red) !important;
+                    }
+
+                    .sidebar .nav .nav-item .nav-link[aria-expanded="true"] .icon-bg {
+                        background: rgba(232, 123, 24, 0.14) !important;
+                    }
+                    /* keep hover red even when expanded */
+                    .sidebar .nav .nav-item .nav-link[aria-expanded="true"]:hover {
+                        background: var(--be-red) !important;
+                        color: #ffffff !important;
+                    }
+
+                        .sidebar .nav .nav-item .nav-link[aria-expanded="true"]:hover .menu-title,
+                        .sidebar .nav .nav-item .nav-link[aria-expanded="true"]:hover i {
+                            color: #ffffff !important;
+                        }
+            /* the expanded sub-menu container background */
+            .sidebar .nav .nav-item .collapse,
+            .sidebar .nav .nav-item .collapse.show,
+            .sidebar .nav .nav-item .collapsing,
+            .sidebar .nav .sub-menu,
+            .sidebar .nav .sub-menu .nav-item,
+            .sidebar .nav .sub-menu .nav-item .nav-link {
+                background: #ffffff !important;
+            }
+            /* eliminate dark blue page wrapper / sidebar surroundings */
+            .page-body-wrapper,
+            .container-fluid.page-body-wrapper,
+            .sidebar.sidebar-offcanvas {
+                background: #ffffff !important;
+            }
+            /* re-apply red hover on top of the white submenu items */
+            .sidebar .nav .sub-menu .nav-item .nav-link:hover,
+            .sidebar .nav .sub-menu .nav-item .nav-link.active {
+                background: var(--be-red) !important;
+                color: #ffffff !important;
+            }
+
+            .sidebar .nav .nav-item.active > .nav-link {
+                border-left: 3px solid var(--be-red);
+            }
+
+                .sidebar .nav .nav-item.active > .nav-link .menu-title {
+                    color: var(--be-red);
+                    font-weight: 700;
+                }
+
+            .sidebar .nav .sub-menu .nav-item .nav-link {
+                color: #5a514c;
+            }
+
+                .sidebar .nav .sub-menu .nav-item .nav-link:hover,
+                .sidebar .nav .sub-menu .nav-item .nav-link.active,
+                .sidebar .nav .sub-menu .nav-item .nav-link:hover * {
+                    color: #ffffff !important;
+                    background: var(--be-red) !important;
+                }
+
+                    .sidebar .nav .sub-menu .nav-item .nav-link:hover::before {
+                        color: #ffffff !important;
+                    }
+
+                .sidebar .nav .sub-menu .nav-item .nav-link::before {
+                    color: var(--be-orange) !important;
+                }
+
+        /* ===== Accents: buttons, links, badges ===== */
+        .btn-primary,
+        .btn-info {
+            background: var(--be-red) !important;
+            border-color: var(--be-red) !important;
+        }
+
+            .btn-primary:hover,
+            .btn-info:hover {
+                background: var(--be-red-deep) !important;
+                border-color: var(--be-red-deep) !important;
+            }
+
+        .btn-success,
+        .btn-warning {
+            background: var(--be-orange) !important;
+            border-color: var(--be-orange) !important;
+            color: #fff !important;
+        }
+
+            .btn-success:hover,
+            .btn-warning:hover {
+                background: var(--be-orange-soft) !important;
+                border-color: var(--be-orange-soft) !important;
+            }
+
+        a {
+            color: var(--be-red);
+        }
+
+            a:hover,
+            a:focus {
+                color: var(--be-red-deep) !important;
+            }
+
+        .text-primary {
+            color: var(--be-red) !important;
+        }
+
+        .bg-primary {
+            background-color: var(--be-red) !important;
+        }
+
+        .badge-primary {
+            background-color: var(--be-red);
+        }
+
+        .badge-warning {
+            background-color: var(--be-orange);
+            color: #fff;
+        }
+
+        .dropdown-menu .dropdown-header {
+            color: var(--be-red) !important;
+        }
+
+        .dropdown-menu .dropdown-item:hover {
+            background: var(--be-red) !important;
+            color: #ffffff !important;
+        }
+
+            .dropdown-menu .dropdown-item:hover i {
+                color: #ffffff !important;
+            }
+
+        .page-link {
+            color: var(--be-red);
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--be-red);
+            border-color: var(--be-red);
+        }
+        /* Table header accent */
+        .table thead th {
+            border-bottom: 2px solid var(--be-orange);
+        }
+
+        /* ===== Logo-colored hover states (high specificity) ===== */
+        /* Sidebar main links */
+        .sidebar .nav .nav-item .nav-link:hover,
+        .sidebar .nav .nav-item:hover > .nav-link {
+            background: var(--be-red) !important;
+            color: #ffffff !important;
+            transition: background 0.18s ease, color 0.18s ease;
+        }
+
+            .sidebar .nav .nav-item .nav-link:hover .menu-title,
+            .sidebar .nav .nav-item:hover > .nav-link .menu-title,
+            .sidebar .nav .nav-item .nav-link:hover i.menu-icon,
+            .sidebar .nav .nav-item .nav-link:hover i.menu-arrow,
+            .sidebar .nav .nav-item:hover > .nav-link i,
+            .sidebar .nav .nav-item .nav-link:hover span,
+            .sidebar .nav .nav-item .nav-link:hover .icon-bg i {
+                color: #ffffff !important;
+            }
+
+            .sidebar .nav .nav-item .nav-link:hover .icon-bg {
+                background: rgba(255, 255, 255, 0.18) !important;
+            }
+        /* Sidebar sub-menu links */
+        .sidebar .nav .sub-menu .nav-item .nav-link:hover {
+            color: #ffffff !important;
+            background: var(--be-red) !important;
+        }
+        /* Navbar links + profile */
+        .navbar .navbar-menu-wrapper .navbar-nav .nav-link:hover,
+        .navbar .navbar-menu-wrapper .navbar-nav .nav-link:hover p {
+            color: #ffe2d8 !important;
+            transition: color 0.18s ease;
+        }
+        /* Dropdown items */
+        .dropdown-menu .dropdown-item:hover,
+        .dropdown-menu .dropdown-item:focus {
+            background: rgba(200, 40, 31, 0.10) !important;
+            color: var(--be-red) !important;
+        }
+
+            .dropdown-menu .dropdown-item:hover i {
+                color: var(--be-red) !important;
+            }
+        /* Generic content links */
+        a:hover,
+        .main-panel a:hover {
+            color: var(--be-red-deep) !important;
+        }
+        /* Pagination hover */
+        .page-link:hover {
+            color: #ffffff !important;
+            background-color: var(--be-orange) !important;
+            border-color: var(--be-orange) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-scroller">
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo" asp-controller="front" asp-action="dash1"><img src="~/front//assets//images//bilal_logo.jpg" alt="Bilal Enterprises" class="be-brand-img" /></a>
+                <a class="navbar-brand brand-logo-mini" asp-controller="front" asp-action="dash1"><img src="~/front//assets//images//bilal_logo.jpg" alt="Bilal Enterprises" class="be-brand-img-mini" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <ul class="navbar-nav navbar-nav-right">
+                    @*             <li class="nav-item  dropdown d-none d-md-block">
+                    <a class="nav-link dropdown-toggle" id="reportDropdown" href="#" data-toggle="dropdown" aria-expanded="false"> Reports </a>
+                    <div class="dropdown-menu navbar-dropdown" aria-labelledby="reportDropdown">
+                    <a class="dropdown-item" href="#">
+                    <i class="mdi mdi-file-pdf mr-2"></i>PDF
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                    <i class="mdi mdi-file-excel mr-2"></i>Excel
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                    <i class="mdi mdi-file-word mr-2"></i>doc
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                    <i class="mdi mdi-file-word mr-2"></i>doc
+                    </a>
+                    </div>
+                    </li> *@
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <div class="nav-profile-text">
+                                <p class="mb-1 text-black"> Hey , @Context.Session.GetString("name")</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
+                            <div class="p-2">
+                                <h5 class="dropdown-header text-uppercase  pl-2 text-dark mt-2">Actions</h5>
+                                <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" asp-action="signout" asp-controller="front">
+                                    <span>Log Out</span>
+                                    <i class="mdi mdi-logout ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-category">Main</li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="dash1" asp-controller="front">
+                            <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="dash" asp-controller="front">
+                            <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                            <span class="menu-title">Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                            <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                            <span class="menu-title">Primary/Secondory</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" asp-action="po" asp-controller="front">Purchase Order</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="orno" asp-controller="front">Customer Order</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="loose" asp-controller="front">Loose Order</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="pending" asp-controller="front">Pending Order</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="payment" asp-controller="front">Payment</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="das" asp-controller="front">DAS</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-action="del_challan" asp-controller="front">Delivery Challan</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                            <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
+                            <span class="menu-title">Fixed Data</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="auth">
+                            <ul class="nav flex-column sub-menu">
+                                @{
+                                    if (Context.Session.GetString("role") == "1")
+                                    {
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-controller="front" asp-action="user">
+                                                User
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="front" asp-action="stock">
+                                        Stock
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="front" asp-action="product">
+                                        Products
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="front" asp-action="customer">
+                                        Customers
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="front" asp-action="vendor">
+                                        Vendor
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="front" asp-action="bank_statement">
+                                        Bank Statement
+                                    </a>
+                                </li>
+                                @{
+                                    if (Context.Session.GetString("role") == "1")
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-controller="front" asp-action="followup">
+                                                Login Hsitory
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="front" asp-action="grn">
+                                        GRN
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    </li>
+
+            </nav>
+            <style>
+                .table-container {
+                    overflow-x: auto;
+                    -webkit-overflow-scrolling: touch;
+                }
+            </style>
+            <!-- partial -->
+            <div class="main-panel">
+
+                <!-- content-wrapper ends -->
+                <div class="container table-container">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/front/assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="~/front/assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="~/front/assets/vendors/jquery-circle-progress/js/circle-progress.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="~/front/assets/js/off-canvas.js"></script>
+    <script src="~/front/assets/js/hoverable-collapse.js"></script>
+    <script src="~/front/assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="~/front/assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+</body>
+</html>
+

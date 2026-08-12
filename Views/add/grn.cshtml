@@ -1,0 +1,30 @@
+﻿@model be.Models.Grn
+
+
+@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Good Recieving Note</h4>
+            <form class="forms-sample" asp-controller="add" asp-action="po">
+                @{
+                    if (TempData.ContainsKey("mess"))
+                    {
+                        <span class="text-danger">@TempData["mess"]</span>
+                    }
+                }
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Purchase Order DC</label>
+                    <div class="col-sm-9">
+                        <input asp-for="GrnDc" class="form-control" required></input>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2" asp-route-id="@ViewBag.id">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

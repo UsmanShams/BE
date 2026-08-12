@@ -1,0 +1,98 @@
+﻿@model IEnumerable<be.Models.Customer>
+
+@{
+    ViewData["Title"] = "customer";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<br />
+<div class="container">
+    <div class="container">
+        <div class="container">
+            <a asp-controller="front" asp-action="customer" asp-route-id="1" class="product-link">
+                Active
+            </a>
+            -
+            <a asp-controller="front" asp-action="customer" asp-route-id="2" class="product-link">
+                Non Active
+            </a>
+            <br />
+            <br />
+            <a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="customer">Add Customer</a>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @{
+                if (TempData.ContainsKey("type"))
+                {
+                    <h1 style="color:black;">@TempData["type"]</h1>
+                }
+            }
+            <h4 class="card-title">Customer Table</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Customer Name
+                        </th>
+                        <th>
+                            Authorized Person
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="cus_pro" asp-controller="add" asp-route-id="@item.CId">@item.CName</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.auth_per)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CEmail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CPhone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CAddress)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CStatus)
+                            </td>
+                            <td>
+                                <a asp-action="customer" asp-controller="edit" asp-route-id="@item.CId">Edit</a> 
+                                <a asp-action="customer" asp-controller="del" asp-route-id="@item.CId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

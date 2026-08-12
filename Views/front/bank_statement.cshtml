@@ -1,0 +1,62 @@
+﻿@model IEnumerable<be.Models.Bankstatement>
+
+@{
+    ViewData["Title"] = "bank_statement";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="bank_statement">Add Bank</a>
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="banktrans">Bank To Bank Transfer</a>
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Bank Statement Table</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Bank Name
+                        </th>
+                        <th>
+                            Account No
+                        </th>
+                        <th>
+                            Account Title
+                        </th>
+                        <th>
+                            Balance
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="front" asp-action="bd_ledger" asp-route-id="@item.BsId">@item.Bankname</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Accountno)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Accounttitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Balance)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+﻿@model IEnumerable<be.Models.Order>
+
+@{
+    ViewData["Title"] = "order";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<br />
+<br />
+
+@{
+    BentContext db1 = new BentContext();
+    var a = 0;
+    foreach (var r in Model)
+    {
+        a = Convert.ToInt32(r.OrUnique);
+    }
+    var v = db1.Order.Where(x => x.OrUnique == a);
+    var tqt = 0;
+    var tdel = 0;
+    foreach (var item1 in v)
+    {
+        tqt = Convert.ToInt32(tqt + item1.Qty);
+        tdel = Convert.ToInt32(tdel + item1.delivered);
+    }
+    if (tdel==0)
+    {
+        <a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="det_order" asp-route-id="@ViewBag.id">Add More Product</a>
+    }
+}
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Order Details</h2>
+            <h3 style="color:black;">Order # @ViewBag.id</h3>
+            <h3 style="color:black;">@ViewBag.cname</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Total Ltr
+                        </th>
+                        <th>
+                            Price/Ltr
+                        </th>
+                        <th>
+                            Total Price
+                        </th>
+                        <th>Del</th>
+                        <th>Rem</th>
+                        @* <th>Status</th> *@
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @{
+                                BentContext db = new BentContext();
+                                var x = db.Customers.Where(x => x.CId == item.CId).First();
+                                var x1 = db.Products.Where(x => x.PId == item.PId).First();
+
+                                var price = item.Qty * item.OPrice;
+                                var r = Convert.ToDouble(price * 1.00 / (x1.PPack * item.Qty * 1.00));
+                                var pprint = Convert.ToInt64(r * 100);
+                                var pprfloat = Convert.ToDouble(pprint * 1.00 / 100.00);
+
+                                var ltr = x1.PPack * item.Qty;
+                                var rem = item.Qty - item.delivered;
+                                <td>@x1.PName</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Qty)
+                                </td>
+                                <td>@x1.PPack</td>
+                                <td>@ltr</td>
+                                <td>@pprfloat</td>
+                                <td>
+                                    @price
+                                </td>
+                                <td>@item.delivered</td>
+                                <td>@rem</td>
+                                // if (rem != 0)
+                                // {
+                                //     <td><a class="btn btn-danger" asp-controller="add" asp-action="ss" asp-route-id="@item.OId">Pending</a></td>
+                                // }
+                                // else
+                                // {
+                                //     <td>Delivered</td>
+                                // }
+                                if (item.Qty == rem)
+                                {
+                                    <td>
+                                        <a asp-action="order" asp-controller="edit" asp-route-id="@item.OId">Edit</a> |
+                                        <a asp-action="order" asp-controller="del" asp-route-id="@item.OId">Delete</a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td><a class="btn btn-primary" asp-controller="edit" asp-route-id="@item.OId" asp-route-unique_id="@item.OrUnique" asp-action="undo_order">Undo</a></td>
+                                }
+
+                            }
+                        </tr>
+                    }
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>@ViewBag.tqt</td>
+                        <td></td>
+                        <td>@ViewBag.tltr</td>
+                        <td></td>
+                        <td>@ViewBag.tpr/=</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

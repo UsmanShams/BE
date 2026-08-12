@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 style="color:black;">
+                Summary @DateTime.Now.Day-@DateTime.Now.Month-@DateTime.Now.Year @DateTime.Now.ToShortTimeString()
+            </h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Topic
+                        </th>
+                        <th>
+                            Credit
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a asp-action="mcr" asp-controller="front">MCR</a></td>
+                        <td>@ViewBag.bal</td>
+                    </tr>
+
+                    <tr>
+                        <td><a asp-action="bank_statement" asp-controller="front">Bank</a></td>
+                        <td>@ViewBag.bank</td>
+                    </tr>
+
+                    <tr>
+                        <td><a asp-action="stock" asp-controller="front">Stock</a></td>
+                        <td>@ViewBag.tqt</td>
+                    </tr>
+                </tbody>
+                @* <tbody>
+                    <tr>
+                        <td></td>
+                        <td>@ViewBag.total</td>
+                    </tr>
+                </tbody> *@
+            </table>
+        </div>
+    </div>
+</div>

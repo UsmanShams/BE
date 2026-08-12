@@ -1,0 +1,65 @@
+﻿@model IEnumerable<be.Models.Vender>
+
+@{
+    ViewData["Title"] = "vendor";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="vendor">Add Vendor</a>
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Vendor Table</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Vendor Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            Ntn
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="vl1" asp-controller="front" asp-route-id="@item.VId">@Html.DisplayFor(modelItem => item.VName)</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VEmail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VPhone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VNtn)
+                            </td>
+                            <td>
+                                <a asp-action="vendor" asp-controller="edit" asp-route-id="@item.VId">Edit</a> |
+                                <a asp-action="vendor" asp-controller="del" asp-route-id="@item.VId">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

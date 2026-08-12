@@ -1,0 +1,122 @@
+﻿@model IEnumerable<be.Models.Secondarysale>
+
+@{
+    ViewData["Title"] = "ss";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+<br />
+<a class="btn btn-secondary btn-fw" asp-controller="front" asp-action="ss">Secondary Sales</a>
+<br />
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Pending Delivery</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>
+                            Order #
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Time
+                        </th>
+                        <th>
+                            Customer
+                        </th>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Total Ltr
+                        </th>
+                        <th>
+                            Price/Ltr
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var tltr = Convert.ToInt32(item.Pack) * item.SsQty;
+                        <tr style="background-color:yellow;">
+                            <td>@item.SsId</td>
+                            @{
+                                if (item.Type == "Drum")
+                                {
+                                    <td>
+                                        @item.SsOrderno
+                                    </td>
+                                }
+                                else if (item.Type == "Druml" || item.Type == "Pail")
+                                {
+                                    <td>
+                                        Loose-BE-@item.SsOrderno
+                                    </td>
+                                }
+                            }
+                            <td>
+                                @item.Day-@item.Month-@item.Year
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Time)
+                            </td>
+                            @{
+                                if (item.CId == 0)
+                                {
+                                    <td>Bilal Associate</td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CIdNavigation.CName)
+                                    </td>
+                                }
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PIdNavigation.PName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SsQty)
+                            </td>
+                            <td>@item.Pack</td>
+                            <td>@tltr</td>
+                            <td>@item.Price</td>
+                            <td>@item.TPrice</td>
+                        </tr>
+                    }
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.tqt</td>
+                        <td></td>
+                        <td>@ViewBag.tltr</td>
+                        <td></td>
+                        <td>@ViewBag.tpr</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

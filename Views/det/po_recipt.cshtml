@@ -1,0 +1,320 @@
+﻿@model IEnumerable<be.Models.Po>
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Purchase Order</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Open Sans', sans-serif;
+            background: #FFF;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0.5in;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1em;
+        }
+
+        header img {
+            max-height: 60px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+
+        article {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        address {
+            margin-bottom: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2em;
+            font-size: 0.8rem;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+
+        table.meta, table.balance {
+            width: 40%;
+            float: right;
+        }
+        .add{
+            border-top: 2px solid #333;
+        }
+        footer {
+            margin-top: 2em;
+            page-break-inside: avoid;
+        }
+
+        footer .row {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1em;
+        }
+
+        footer p {
+            margin: 0.3em 0;
+            text-align: center;
+        }
+
+        /* Print styles */
+        @@media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                padding: 1cm;
+                display: flex;
+                flex-direction: column;
+                min-height: 100%;
+            }
+
+            article {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            footer {
+                page-break-inside: avoid;
+                margin-top: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="row">
+            <img src="~/front/assets/images/bilal_logo.jpg" alt="Logo" style="width: 25%;">
+            <div style="flex: 1;"></div>
+            <img src="~/front/assets/images/petromin_logo.jpg" alt="Logo" style="width: 25%;">
+        </div>
+        <h1>Purchase Order</h1>
+    </header>
+
+    <article>
+        <div>
+            <address>
+                <p><strong>@ViewBag.vendor</strong> </p>
+                <p><strong>NTN : @ViewBag.ntn </strong>  </p>
+            </address>
+            @{
+                    var iid = @ViewBag.id + 492;
+                }
+            <table class="meta">
+                <tr>
+                    <th>PO #</th>
+                    <td>BE-@iid</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>@DateTime.Now.ToString("dd-MM-yyyy")</td>
+                </tr>
+            </table>
+            @{
+                BentContext db1 = new BentContext();
+                var ccb = 0;
+                foreach (var item1 in Model)
+                {
+                    ccb = Convert.ToInt32(item1.PoUnique);
+                }
+}
+            <br />
+
+            @{
+                if (TempData.ContainsKey("mess"))
+                {
+                    <span class="text-danger">@TempData["mess"]</span>
+                }
+                else
+                {
+                    <table class="inventory hh">
+                        @{
+                            var a = 0;
+                            foreach (var r in Model)
+                            {
+                                a = Convert.ToInt32(r.PoUnique);
+                            }
+                            var v = db1.PoNos.Where(x => x.PonoId == a).First();
+
+                        }
+                        <br />
+
+                        <thead>
+                            <tr>
+                                <th><span>Serial<br /> No.</span></th>
+                                <th><span>Product <br /> Name</span></th>
+                                <th><span>Pack</span></th>
+                                <th><span>Qty</span></th>
+                                <th><span>Total <br /> LTR</span></th>
+                                <th><span>Base <br /> Price/LTR</span></th>
+                                <th><span>Trade <br /> Discount</span></th>
+                                <th><span>After Discount <br /> Amount</span></th>
+                                <th><span>Total <br /> Amount</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var h = 1;
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        @{
+                                            ccb = Convert.ToInt32(item.PoUnique);
+                                            BentContext db = new BentContext();
+                                            var item1 = db.Products.Where(x => x.PId == item.PId).First();
+
+                                            var r = Convert.ToDouble(item1.PPr * 1.00 / item1.PPack * 1.00);
+                                            var pprint = Convert.ToInt64(r * 100);
+                                            var pprfloat = Convert.ToDouble(pprint * 1.00 / 100.00);
+                                            var aft_trade_disc = pprfloat - Convert.ToDouble(item.PIdNavigation.Trade_disc);
+                                            var x1 = item.PoQty * item.PIdNavigation.PPack;
+                                            var rrrr = Convert.ToDouble(item.baseprltr) + Convert.ToDouble(@item.PIdNavigation.Trade_disc);
+                                            var tot = item.PoPrice * item.PoQty;
+
+                                            <td style="text-align: center;">@h</td>
+                                            h++;
+
+                                            <td>@Html.DisplayFor(modelItem => item.PIdNavigation.PName)</td>
+
+                                            <td style="text-align: right;">@Html.DisplayFor(modelItem => item.PIdNavigation.PPack)</td>
+
+                                            <td style="text-align: right;">	@Html.DisplayFor(modelItem => item.PoQty)</td>
+
+                                            <td style="text-align: right;">@x1</td>
+
+                                            <td style="text-align: right;">@rrrr</td>
+
+                                            <td style="text-align: right;">@item.PIdNavigation.Trade_disc</td>
+
+                                            <td style="text-align: right;">@item.baseprltr</td>
+
+                                            <td style="text-align: right;">@tot/=</td>
+                                        }
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+            }
+            <table class="balance">
+                <tr>
+                    <th style="text-align: left;">Total</th>
+                        @{
+                            var x12 = 0;
+                            var ltr = 0;
+                            var qty = 0;
+                        var x12_tax = 0;
+                        BentContext db1c = new BentContext();
+                            foreach (var item1 in Model)
+                        {
+                            x12 = x12 + Convert.ToInt32(item1.PoPrice * item1.PoQty);
+                            ltr = ltr + Convert.ToInt32(item1.PoQty * item1.PIdNavigation.PPack);
+                            qty = qty + Convert.ToInt32(item1.PoQty);
+                            var pro = db1c.Products.Where(x => x.PId == item1.PId).First();
+                            x12_tax = x12_tax + Convert.ToInt32(pro.PPack * item1.PoQty * (pro.PPr / pro.PPack));
+
+                        }
+                        <td><span data-prefix>Rs : </span><span>@x12/=</span></td>
+                    }
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Tax Amount</th>
+                    @{
+                        int tax = Convert.ToInt32(x12_tax * 0.001);
+                        <td><span data-prefix>Rs : </span><span>@tax/=</span></td>
+                    }
+                </tr>
+                <tr>
+                    <th style="text-align: left;">Final Amount</th>
+                        @{
+                            var final = x12 + tax;
+                            <td><span data-prefix>Rs : </span><span>@final/=</span></td>
+                    }
+                </tr>
+            </table>
+        </div>
+
+        <footer>
+            <!-- Signature Section -->
+            <div class="row">
+                <div>
+                    <p>___________________________</p>
+                    <p><strong>Customer Signature</strong></p>
+                </div>
+                <div>
+                    <p>___________________________</p>
+                    <p><strong>Authorized Signature</strong></p>
+                </div>
+            </div>
+            <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            <!-- Address Section -->
+            <div class="add" style="text-align: center; font-size: 0.8rem;">
+                <p><strong>Address:</strong> Bilal Enterprises, Hawksbay Truck Stand, Karachi, Pakistan</p>
+                <p><strong>Phone:</strong> +92-321-2032203 | <strong>Email:</strong> info@bilalenterprises.com</p>
+            </div>
+        </footer>
+    </article>
+
+</body>
+</html>

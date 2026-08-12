@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Cheque";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Apply Date For @ViewBag.name Ledger</h1>
+            <br />
+            <form asp-controller="filter" asp-action="vl1">
+                <input name="id" value="@ViewBag.id" type="hidden" />
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter From Date</label>
+                    <div class="col-sm-9">
+                        <input type="date" name="date" class="form-control" placeholder="" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter To Date</label>
+                    <div class="col-sm-9">
+                        <input type="date" name="date1" class="form-control" placeholder="" required />
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

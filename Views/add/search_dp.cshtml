@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <form class="forms-sample" asp-controller="front" asp-action="ss">
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Type</label>
+                    <div class="col-sm-9">
+                        <select name="type" class="form-control">
+                            <option value="0">All</option>
+                            <option value="Drum">Drum</option>
+                            <option value="Pail">Pail</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Search</button>
+            </form>
+        </div>
+    </div>
+</div>

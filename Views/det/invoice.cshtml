@@ -1,0 +1,302 @@
+﻿@model IEnumerable<be.Models.Order>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Commercial Invoice</title>
+    <style>
+            /* Reset */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html, body {
+                font-family: 'Open Sans', sans-serif;
+                background: #FFF;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                width: 100%;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                padding: 0.5in;
+                box-sizing: border-box;
+            }
+
+            h1 {
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 1.2rem;
+                letter-spacing: 0.2em;
+                margin-bottom: 1em;
+            }
+
+            header img {
+                max-height: 60px;
+            }
+
+            .row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1em;
+            }
+
+            article {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            address {
+                margin-bottom: 1em;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 2em;
+                font-size: 0.8rem;
+                border: 1.5px solid #000;
+            }
+
+            th, td {
+                border: 1px solid #000;
+                padding: 0.5em;
+                color: #000;
+            }
+
+            /* labels left, values right */
+            th {
+                background: #e8e8e8;
+                color: #000;
+                text-align: left;
+            }
+
+            td {
+                text-align: right;
+            }
+
+            /* S.No centered */
+            table.inventory td:first-child {
+                text-align: center;
+            }
+
+            /* product names read better left-aligned (2nd column, after S.No) */
+            table.inventory td:nth-child(2) {
+                text-align: left;
+            }
+
+            table.meta, table.balance {
+                width: 40%;
+                float: right;
+            }
+
+            .add {
+                border-top: 2px solid #000;
+            }
+
+            footer {
+                margin-top: 2em;
+                page-break-inside: avoid;
+            }
+
+                /* signature blocks pushed to the outer edges */
+                footer .sign-row {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    margin-bottom: 1em;
+                }
+
+                footer p {
+                    margin: 0.3em 0;
+                }
+
+                /* each block is exactly as wide as its line, label centered under it */
+                footer .sign-block {
+                    width: 240px;
+                    text-align: center;
+                }
+
+                footer .sign-line {
+                    width: 100%;
+                    height: 2.5em;
+                    border-bottom: 1.5px solid #000;
+                    margin-bottom: 0.3em;
+                }
+
+            /* Print styles */
+            @@media print {
+                html, body {
+                    width: 210mm;
+                    height: 297mm;
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+
+                body {
+                    padding: 1cm;
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100%;
+                }
+
+                article {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                footer {
+                    page-break-inside: avoid;
+                    margin-top: auto;
+                }
+                    /* keep borders and header shading solid when printing */
+                    table, th, td, .add, footer .sign-line {
+                        -webkit-print-color-adjust: exact;
+                        print-color-adjust: exact;
+                    }
+            }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="row">
+            <img src="~/front/assets/images/bilal_logo.jpg" alt="Logo" style="width: 25%;">
+            <div style="flex: 1;"></div>
+            <img src="~/front/assets/images/petromin_logo.jpg" alt="Logo" style="width: 25%;">
+        </div>
+        <h1>Commercial Invoice</h1>
+    </header>
+
+    <article>
+        <div>
+            <address>
+                <p><strong>Customer Name:</strong> @ViewBag.name</p><br />
+                <p><strong>Address:</strong> @ViewBag.name</p>
+            </address>
+
+            <table class="meta">
+                <tr>
+                    <th>Invoice #</th>
+                    <td>@ViewBag.invoice</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>@ViewBag.date</td>
+                </tr>
+            </table>
+
+            <table class="inventory">
+                <thead>
+                    <tr>
+                        <th>
+                            S.No
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Total Ltr
+                        </th>
+                        <th>
+                            Price/Ltr
+                        </th>
+                        <th>
+                            Total Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var sno = 1;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@sno</td>
+
+                            @{
+                                sno = sno + 1;
+                                BentContext db = new BentContext();
+                                var x = db.Customers.Where(x => x.CId == item.CId).First();
+                                var x1 = db.Products.Where(x => x.PId == item.PId).First();
+
+                                var r = Convert.ToDouble(x1.PSp * 1.00 / x1.PPack * 1.00);
+                                var pprint = Convert.ToInt64(r * 100);
+                                var pprfloat = Convert.ToDouble(pprint * 1.00 / 100.00);
+
+                                var price = item.Qty * item.OPrice;
+                                var ltr = x1.PPack * item.Qty;
+                                var rem = item.Qty - item.delivered;
+                                <td>@x1.PName</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Qty)
+                                </td>
+                                <td>@x1.PPack</td>
+                                <td>@ltr</td>
+                                <td>@pprfloat</td>
+                                <td>
+                                    @price
+                                </td>
+
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <table class="balance">
+                <tr>
+                    <th>Total Price</th>
+                    <td>@ViewBag.tpr</td>
+                </tr>
+            </table>
+        </div>
+
+        <footer>
+            <!-- Signature Section -->
+            <div class="sign-row">
+                <div class="sign-block">
+                    <div class="sign-line"></div>
+                    <p><strong>Customer Signature</strong></p>
+                </div>
+                <div class="sign-block">
+                    <div class="sign-line"></div>
+                    <p><strong>Authorized Signature</strong></p>
+                </div>
+            </div>
+
+            <!-- Address Section -->
+            <div class="add" style="text-align: center; font-size: 0.8rem;">
+                <p><strong>Address:</strong> Bilal Enterprises, Hawksbay Truck Stand, Karachi, Pakistan</p>
+                <p><strong>Phone:</strong> +92-321-2032203 +92-321-9269303 | <strong>Email:</strong> info@bilalenterprises.com</p>
+            </div>
+        </footer>
+    </article>
+
+</body>
+</html>

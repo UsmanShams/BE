@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Edit Loose Date</h1>
+            <br />
+            <form class="forms-sample" asp-controller="edit" asp-action="drumopendate">
+                <input name="id1" type="hidden" value="@ViewBag.loose_id" class="form-control" required />
+
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter Date</label>
+                    <div class="col-sm-9">
+                        <input name="date" value="@ViewBag.date" type="date" class="form-control" required />
+                    </div>
+                    @{
+                        if (TempData.ContainsKey("cust"))
+                        {
+                            <span class="text-danger">@TempData["cust"]</span>
+                        }
+                    }
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Edit</button>
+            </form>
+        </div>
+    </div>
+</div>

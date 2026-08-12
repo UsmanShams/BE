@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Search Customer</h4>
+            <form class="forms-sample" asp-controller="front" asp-action="mcr">
+                @{
+                    if (TempData.ContainsKey("mess"))
+                    {
+                        <span class="text-danger">@TempData["mess"]</span>
+                    }
+                }
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Select Customer</label>
+                    <div class="col-sm-9">
+                        <select name="cus" class="form-control">
+                            @{
+                                BentContext db = new BentContext();
+                                var cus = db.Customers.Where(x => x.CName != "Bilal Associate").OrderBy(x => x.CName).ToList();
+                                foreach (var item in cus)
+                                {
+                                    <option value="@item.CId">@item.CName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Search</button>
+            </form>
+        </div>
+    </div>
+</div>

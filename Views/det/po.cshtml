@@ -1,0 +1,200 @@
+﻿@model IEnumerable<be.Models.Po>
+
+@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+	.btn-primary.btn-rounded.btn-fw:hover {
+		background: #a01a13 !important; /* darker logo red */
+		border-color: #a01a13 !important;
+		color: #ffffff !important;
+	}
+</style>
+<br />
+<br />
+@{
+	BentContext db1 = new BentContext();
+    if (Model is null)
+    {
+	    <a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="det_po" asp-route-id="@ViewBag.id">Add More Product</a>
+		
+    }
+    else
+    {
+
+		<div class="col-lg-6 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					@{
+						var ccb = 0;
+						foreach (var item1 in Model)
+						{
+							ccb = Convert.ToInt32(item1.PoUnique);
+						}
+
+						var g1 = db1.PoNos.Where(x => x.PonoId == ccb).First();
+						if (g1.PonoStatus == "no")
+						{
+							<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="det_po" asp-route-id="@ViewBag.id">Add More Product</a>
+						}
+					}
+					<br />
+
+					@{
+						if (TempData.ContainsKey("mess"))
+						{
+							<span class="text-danger">@TempData["mess"]</span>
+						}
+						else
+						{
+							<table class="table table-hover">
+								@{
+									var a = 0;
+									foreach (var r in Model)
+									{
+										a = Convert.ToInt32(r.PoUnique);
+									}
+									var v = db1.PoNos.Where(x => x.PonoId == a).First();
+									var iid = @ViewBag.id + 492;
+								}
+								<br />
+								<br />
+								<h3 style="color:black;">Purchase Order # BE-@iid</h3>
+								<h3 style="color:black;">Date : @ViewBag.date</h3>
+								<h3 style="color:black;">Vendor : @ViewBag.vendor</h3>
+
+								<thead>
+									<tr>
+										<th><span>Serial<br /> No.</span></th>
+										<th><span>Product <br /> Name</span></th>
+										<th><span>Pack</span></th>
+										<th><span>Qty</span></th>
+										<th><span>Total <br /> LTR</span></th>
+										<th><span>Base <br /> Price/LTR</span></th>
+										<th><span>Trade <br /> Discount</span></th>
+										<th><span>After Discount <br /> Amount</span></th>
+										<th><span>Total <br /> Amount</span></th>
+										<th><span>Action</span></th>
+									</tr>
+								</thead>
+								<tbody>
+									@{
+										var h = 1;
+										foreach (var item in Model)
+										{
+											<tr>
+												@{
+													ccb = Convert.ToInt32(item.PoUnique);
+													BentContext db = new BentContext();
+													var item1 = db.Products.Where(x => x.PId == item.PId).First();
+
+													var r = Convert.ToDouble(item1.PPr * 1.00 / item1.PPack * 1.00);
+													var pprint = Convert.ToInt64(r * 100);
+													var pprfloat = Convert.ToDouble(pprint * 1.00 / 100.00);
+													var aft_trade_disc = pprfloat - Convert.ToDouble(item.PIdNavigation.Trade_disc);
+													var x1 = item.PoQty * item.PIdNavigation.PPack;
+													var rrrr = Convert.ToDouble(item.baseprltr) + Convert.ToDouble(@item.PIdNavigation.Trade_disc);
+													var tot = item.PoPrice * item.PoQty;
+
+													<td style="text-align: center;">@h</td>
+													h++;
+
+													<td>@Html.DisplayFor(modelItem => item.PIdNavigation.PName)</td>
+
+													<td style="text-align: right;">@Html.DisplayFor(modelItem => item.PIdNavigation.PPack)</td>
+
+													<td style="text-align: right;">	@Html.DisplayFor(modelItem => item.PoQty)</td>
+
+													<td style="text-align: right;">@x1</td>
+
+													<td style="text-align: right;">@rrrr</td>
+
+													<td style="text-align: right;">@item.PIdNavigation.Trade_disc</td>
+
+													<td style="text-align: right;">@item.baseprltr</td>
+
+													<td style="text-align: right;">@tot/=</td>
+													<td>
+														@{
+															var g = db.PoNos.Where(x => x.PonoId == item.PoUnique).First();
+															if (g.PonoStatus == "no")
+															{
+																<a asp-action="po" asp-controller="edit" asp-route-id="@item.PoId">Edit</a>
+																<a asp-action="po1" asp-controller="del" asp-route-id="@item.PoId">Delete</a>
+															}
+														}
+
+													</td>
+												}
+											</tr>
+										}
+									}
+								</tbody>
+								<tbody>
+									<td style="font-weight:bold;"></td>
+									<td></td>
+									<td></td>
+									@{
+										var x12 = 0;
+										var ltr = 0;
+										var qty = 0;
+										var x12_tax = 0;
+										BentContext db1c = new BentContext();
+										foreach (var item1 in Model)
+										{
+											x12 = x12 + Convert.ToInt32(item1.PoPrice * item1.PoQty);
+											ltr = ltr + Convert.ToInt32(item1.PoQty * item1.PIdNavigation.PPack);
+											qty = qty + Convert.ToInt32(item1.PoQty);
+
+											var pro = db1c.Products.Where(x => x.PId == item1.PId).First();
+											x12_tax = x12_tax + Convert.ToInt32(pro.PPack * item1.PoQty * (pro.PPr / pro.PPack));
+										}
+										<td style="font-weight:bold;"></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td style="font-weight:bold;">Total:</td>
+										<td style="font-weight:bold;">@x12/=</td>
+									}
+								</tbody>
+
+
+								<tbody>
+									<td style="font-weight:bold;"></td>
+									<td></td>
+									<td></td>
+									@{
+										int tax = Convert.ToInt32(x12_tax * 0.001);
+										<td style="font-weight:bold;"></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td style="font-weight:bold;">Tax:</td>
+										<td style="font-weight:bold;">@tax/=</td>
+									}
+								</tbody>
+
+
+								<tbody>
+								<td style="font-weight:bold;">Total</td>
+								<td></td>
+								<td></td>
+									@{
+										int final = x12 + tax;
+										<td style="font-weight:bold;">@qty</td>
+									<td style="font-weight:bold;">@ltr</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td style="font-weight:bold;">@final/=</td>
+									}
+								</tbody>
+							</table>
+						}
+					}
+				</div>
+			</div>
+		</div>
+    }
+}

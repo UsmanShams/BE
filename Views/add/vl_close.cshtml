@@ -1,0 +1,47 @@
+﻿@model be.Models.Vendorledger
+@{
+    ViewData["Title"] = "Cheque";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Add Vendor Closing</h1>
+            <br />
+            <form asp-controller="add" asp-action="vl_close">
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Vendor Name</label>
+                    <div class="col-sm-9" ViewBag.name>
+                        <select asp-for="VName" class="form-control">
+                            <option value="@ViewBag.name">@ViewBag.name</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Credit</label>
+                    <div class="col-sm-9">
+                        <input asp-for="VlIn" class="form-control" placeholder="Enter In" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Debit</label>
+                    <div class="col-sm-9">
+                        <input asp-for="VlOut" class="form-control" placeholder="Enter Out" />
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

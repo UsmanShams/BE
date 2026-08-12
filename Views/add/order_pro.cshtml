@@ -1,0 +1,37 @@
+﻿@model be.Models.Order
+
+@{
+    ViewData["Title"] = "order_pro";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add Product For Order</h4>
+            <form class="forms-sample" asp-controller="add" asp-action="order_pro">
+                @{
+                    if (TempData.ContainsKey("mess"))
+                    {
+                        <span class="text-danger">@TempData["mess"]</span>
+                    }
+                }
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Products</label>
+                    <div class="col-sm-9">
+                        <select asp-for="PId" class="form-control" asp-items="@ViewBag.Pid"></select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Qty</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Qty" class="form-control" required />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2" asp-route-id="0">Submit</button>
+                <button type="submit" class="btn btn-primary mr-2" asp-route-id="1">Add 1 More</button>
+                <a type="submit" class="btn btn-primary mr-2" asp-action="orno" asp-controller="front">End</a>
+            </form>
+        </div>
+    </div>
+</div>

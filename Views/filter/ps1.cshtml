@@ -1,0 +1,305 @@
+﻿@model IEnumerable<be.Models.Primarysale>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Primary Sales</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Open Sans', sans-serif;
+            background: #FFF;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0.5in;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1em;
+        }
+
+        header img {
+            max-height: 60px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+
+        article {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        address {
+            margin-bottom: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2em;
+            font-size: 0.8rem;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+
+        table.meta, table.balance {
+            width: 40%;
+            float: right;
+        }
+
+        .add {
+            border-top: 2px solid #333;
+        }
+
+        footer {
+            margin-top: 2em;
+            page-break-inside: avoid;
+        }
+
+            footer .row {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 1em;
+            }
+
+            footer p {
+                margin: 0.3em 0;
+                text-align: center;
+            }
+
+        /* Print styles */
+        @@media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                padding: 1cm;
+                display: flex;
+                flex-direction: column;
+                min-height: 100%;
+            }
+
+            article {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            footer {
+                page-break-inside: avoid;
+                margin-top: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="row">
+            <img src="~/front/assets/images/bilal_logo.jpg" alt="Logo" style="width: 25%;">
+            <div style="flex: 1;"></div>
+            <img src="~/front/assets/images/petromin_logo.jpg" alt="Logo" style="width: 25%;">
+        </div>
+        <h1>Primary Sales</h1>
+    </header>
+
+    <article>
+        <div>
+            <address>
+                <p><strong>Primary Sales FROM : </strong>@ViewBag.d1 TO @ViewBag.d2</p>
+            </address>
+
+            <table class="meta">
+                <tr>
+                    <th>Date</th>
+                    <td>@DateTime.Now.ToString("dd-MM-yyyy")</td>
+                </tr>
+            </table>
+
+            <table class="inventory hh">
+                <thead>
+                    <tr>
+                        <th>
+                            Order #
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Purchase <br /> From
+                        </th>
+                        <th>
+                            D/C No
+                        </th>
+                        @* <th>
+                        Date
+                        </th> *@
+                        <th style="width:30%;">
+                            Product
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Ltr
+                        </th>
+                        <th>
+                            Rate
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>BE-@item.OrderID</td>
+                            @{
+                                if (item.month == "1")
+                                {
+                                    <td>@item.day-Jan-@item.year</td>
+                                }
+                                else if (item.month == "2")
+                                {
+                                    <td>@item.day-Feb-@item.year</td>
+                                }
+                                else if (item.month == "3")
+                                {
+                                    <td>@item.day-Mar-@item.year</td>
+                                }
+                                else if (item.month == "4")
+                                {
+                                    <td>@item.day-Apr-@item.year</td>
+                                }
+                                else if (item.month == "5")
+                                {
+                                    <td>@item.day-May-@item.year</td>
+                                }
+                                else if (item.month == "6")
+                                {
+                                    <td>@item.day-Jun-@item.year</td>
+                                }
+                                else if (item.month == "7")
+                                {
+                                    <td>@item.day-Jul-@item.year</td>
+                                }
+                                else if (item.month == "8")
+                                {
+                                    <td>@item.day-Aug-@item.year</td>
+                                }
+                                else if (item.month == "9")
+                                {
+                                    <td>@item.day-Sep-@item.year</td>
+                                }
+                                else if (item.month == "10")
+                                {
+                                    <td>@item.day-Oct-@item.year</td>
+                                }
+                                else if (item.month == "11")
+                                {
+                                    <td>@item.day-Nov-@item.year</td>
+                                }
+                                else if (item.month == "12")
+                                {
+                                    <td>@item.day-Dec-@item.year</td>
+                                }
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DcNo)
+                            </td>
+                            @* <td>
+                        @Html.DisplayFor(modelItem => item.PsDate)
+                        </td> *@
+                            @{
+                                BentContext db = new BentContext();
+                                var r = db.Products.Where(x => x.PId == Convert.ToInt32(item.PName)).First();
+                                var ltr = r.PPack * item.PsQty;
+                                <td style="width:30%;">@r.PName</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PsPack)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PsQty)
+                                </td>
+                                <td>@ltr</td>
+                                <td>@item.Price</td>
+                                <td>@item.Total</td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+                <tbody>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="font-weight:bold;">@ViewBag.tqt</td>
+                <td style="font-weight:bold;">@ViewBag.tltr LTR</td>
+                <td></td>
+                <td style="font-weight:bold;">@ViewBag.tpr/=</td>
+
+                </tbody>
+                </table>
+        </div>
+
+    </article>
+
+</body>
+</html>

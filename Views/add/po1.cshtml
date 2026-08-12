@@ -1,0 +1,25 @@
+﻿@model be.Models.PoNo
+
+@{
+    ViewData["Title"] = "po1";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Enter Vendor Name</h4>
+            <form class="forms-sample" asp-controller="add" asp-action="po1">
+                
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Vendor Name</label>
+                    <div class="col-sm-9">
+                        <select asp-for="Vendor" class="form-control" asp-items="@ViewBag.VId" ></select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

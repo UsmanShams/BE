@@ -1,0 +1,92 @@
+﻿@model IEnumerable<be.Models.Product>
+
+@{
+    ViewData["Title"] = "product";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="product">Add Product</a>
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Product Table</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Code
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Purchase<br /> Price <br />/ ltr
+                        </th>
+                        <th>Purchase<br /> Price<br />/Drum</th>
+                        <th>
+                            Sale<br /> Price<br /> / ltr
+                        </th>
+                        <th>Sale<br /> Price<br />/Drum</th>
+                        <th>Trade<br /> Discount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PCode)
+                            </td>
+                            <td>
+                                <a asp-action="pl" asp-controller="front" asp-route-id="@item.PId">
+                                @Html.DisplayFor(modelItem => item.PName)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PPack)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PType)
+                            </td>
+                                
+                            @{
+                                var r = Convert.ToDouble(item.PPr*1.00 / item.PPack*1.00);
+                                var pprint = Convert.ToInt64(r * 100);
+                                var pprfloat = Convert.ToDouble(pprint*1.00/100.00);
+
+                                var rr = Convert.ToDouble(item.PSp*1.00 / item.PPack*1.00);
+                                var pspint = Convert.ToInt64(rr * 100);
+                                var pspfloat = Convert.ToDouble(pspint * 1.00 / 100.00);
+
+                                <td>@pprfloat</td>
+                                <td>@item.PPr</td>
+                                <td>@pspfloat</td>
+                                <td>@item.PSp</td>
+                                <td>@item.Trade_disc</td>
+                                }
+                            <td>
+                                <a asp-action="product" asp-controller="edit" asp-route-id="@item.PId">Edit</a>
+                                @*| <a asp-action="product" asp-controller="del" asp-route-id="@item.PId">Delete</a> *@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

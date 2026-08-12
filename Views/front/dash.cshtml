@@ -1,0 +1,169 @@
+﻿@{
+    ViewData["Title"] = "ss";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --be-red: #c8281f;
+        --be-red-deep: #a01a13;
+        --be-orange: #e87b18;
+        --be-orange-soft: #f0922e;
+        --be-ink: #1a1614;
+        --be-muted: #8a7d76;
+        --be-line: #efe4dc;
+    }
+
+    .container {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        padding-top: 8px;
+    }
+
+    /* Section heading */
+    .h1 {
+        font-family: 'Outfit', sans-serif;
+        color: var(--be-ink) !important;
+        font-weight: 800;
+        font-size: 1.5rem;
+        letter-spacing: -.02em;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+    }
+
+        .h1::before {
+            content: "";
+            width: 6px;
+            height: 26px;
+            border-radius: 6px;
+            background: linear-gradient(180deg, var(--be-red), var(--be-orange));
+            display: inline-block;
+        }
+
+    /* Report link grid */
+    .row.div {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 14px;
+        margin: 18px 0 0 0;
+    }
+
+    /* Each report link as a modern card-button */
+    .div a.btn,
+    .div a.btn-secondary {
+        margin: 0 !important;
+        font-family: 'Outfit', sans-serif !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        text-align: left;
+        color: var(--be-ink) !important;
+        background: #ffffff !important;
+        border: 1px solid var(--be-line) !important;
+        border-left: 4px solid var(--be-red) !important;
+        border-radius: 13px !important;
+        padding: 16px 18px !important;
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none !important;
+        box-shadow: none !important;
+        transition: transform .2s cubic-bezier(.2,.7,.2,1), border-color .2s, background .2s, color .2s;
+    }
+
+        /* Leading icon tile */
+        .div a.btn > i.fa,
+        .div a.btn-secondary > i.fa {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, rgba(200,40,31,.12), rgba(232,123,24,.14));
+            color: var(--be-red);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .95rem;
+            transition: background .2s, color .2s;
+        }
+        /* document glyph inside the icon dot using CSS */
+        .div a.btn::after,
+        .div a.btn-secondary::after {
+            content: "\203A";
+            position: absolute;
+            right: 16px;
+            font-size: 1.3rem;
+            line-height: 1;
+            color: var(--be-orange);
+            font-weight: 700;
+            transition: transform .2s, color .2s;
+        }
+
+        .div a.btn:hover,
+        .div a.btn-secondary:hover {
+            transform: translateY(-3px);
+            background: var(--be-red) !important;
+            border-color: var(--be-red) !important;
+            border-left-color: var(--be-red-deep) !important;
+            color: #ffffff !important;
+        }
+
+            .div a.btn:hover::before,
+            .div a.btn-secondary:hover::before,
+            .div a.btn:hover > i.fa,
+            .div a.btn-secondary:hover > i.fa {
+                background: rgba(255,255,255,.22);
+                color: #ffffff;
+            }
+
+            .div a.btn:hover::after,
+            .div a.btn-secondary:hover::after {
+                color: #ffffff;
+                transform: translateX(4px);
+            }
+
+        .div a.btn:focus,
+        .div a.btn-secondary:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(200,40,31,.18) !important;
+        }
+
+    @@media (max-width: 600px) {
+        .row.div {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+<div class="container">
+
+    <br />
+    <br />
+    <br />
+    @* <h1 class="h1">Actions</h1>
+    <br />
+    <div class="row div" >
+    <a class="btn btn-secondary btn-fw" asp-action="po" asp-controller="front">Petromin Order</a>
+    <a class="btn btn-secondary btn-fw" asp-action="orno" asp-controller="front">Customer Order</a>
+    <a class="btn btn-secondary btn-fw" asp-action="loose" asp-controller="front">Loose Order</a>
+    <a class="btn btn-secondary btn-fw" asp-action="payment" asp-controller="front">Payment</a>
+    <a class="btn btn-secondary btn-fw" asp-action="das" asp-controller="front">DAS</a>
+    <a class="btn btn-secondary btn-fw" asp-controller="front" asp-action="del_challan">Delivery Challan</a>
+    </div> *@
+    <br />
+    <h1 class="h1">Reports</h1>
+    <br />
+    <div class="row div">
+        <a class="btn btn-secondary btn-fw" asp-action="pending" asp-controller="front"><i class="fa fa-clock-o"></i>Pending Order</a>
+        <a class="btn btn-secondary btn-fw" asp-action="ps" asp-controller="front"><i class="fa fa-line-chart"></i>Primary Sales</a>
+        <a class="btn btn-secondary btn-fw" asp-action="ss" asp-controller="front"><i class="fa fa-area-chart"></i>Secondary Sales</a>
+        <a class="btn btn-secondary btn-fw" asp-action="cl" asp-controller="front"><i class="fa fa-user"></i>Customer Ledger</a>
+        <a class="btn btn-secondary btn-fw" asp-action="stock" asp-controller="front"><i class="fa fa-cubes"></i>Product Ledger</a>
+        <a class="btn btn-secondary btn-fw" asp-action="vl" asp-controller="front"><i class="fa fa-truck"></i>Vendor Ledger</a>
+        <a class="btn btn-secondary btn-fw" asp-action="mcr" asp-controller="front"><i class="fa fa-file-text"></i>MCR</a>
+        @* <a class="btn btn-secondary btn-fw" asp-action="s1" asp-controller="front">Summary</a> *@
+        <a class="btn btn-secondary btn-fw" asp-action="cus_sum" asp-controller="front"><i class="fa fa-users"></i>Customer Summary</a>
+        @* <a class="btn btn-secondary btn-fw" asp-action="ann_sum" asp-controller="front">Annual Summary</a> *@
+    </div>
+</div>
+

@@ -1,0 +1,432 @@
+﻿@{
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 style="color:black;">
+                Year: @ViewBag.year 
+                @* @DateTime.Now.Day-@DateTime.Now.Month-@DateTime.Now.Year @DateTime.Now.ToShortTimeString() *@
+            </h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr style="font-weight:bold;">
+                        <th style="font-weight:bold;">
+                            Months
+                        </th>
+                        <th></th>
+                        <th style="font-weight:bold;">
+                            Primary 
+                        </th>
+                        <th style="font-weight:bold;">
+                            Sales 
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th style="font-weight:bold;">
+                            Secondary 
+                        </th>
+                        <th style="font-weight:bold;">
+                            Sales 
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th style="font-weight:bold;">
+                            MCR
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th style="font-weight:bold;">
+                            Stock Details
+                        </th>
+                        @* <th style="font-weight:bold;">
+                            Details
+                        </th> *@
+                        <th></th>
+                        <th style="font-weight:bold;">
+                            Bank
+                        </th>
+                        <th></th>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <th>Profit</th>
+                            }
+                        }
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td style="font-weight:bold;"></td>
+                        <td></td>
+                        <td style="font-weight:bold;">Rs</td>
+                        <td style="font-weight:bold;">Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td style="font-weight:bold;">Rs</td>
+                        <td style="font-weight:bold;">Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td style="font-weight:bold;">Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td style="font-weight:bold;">Rs</td> *@
+                        <td style="font-weight:bold;">Ltr</td>
+                        <td></td>
+                        <td style ="font-weight:bold;">Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td style="font-weight:bold;">Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">January</td>
+                        <td></td>
+                        <td>@ViewBag.pjan Rs</td>
+                        <td>@ViewBag.pjanl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.sjan Rs</td>
+                        <td>@ViewBag.sjanl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.cjan Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stjanp Rs</td> *@
+                        <td>@ViewBag.stjan Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bjan Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prjan Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Feburary</td>
+                        <td></td>
+                        <td>@ViewBag.pfeb Rs</td>
+                        <td>@ViewBag.pfebl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.sfeb Rs</td>
+                        <td>@ViewBag.sfebl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.cfeb Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stfebp Rs</td> *@
+                        <td>@ViewBag.stfeb Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bfeb Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prfeb Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">March</td>
+                        <td></td>
+                        <td>@ViewBag.pmar Rs</td>
+                        <td>@ViewBag.pmarl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.smar Rs</td>
+                        <td>@ViewBag.smarl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.cmar Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stmarp Rs</td> *@
+                        <td>@ViewBag.stmar Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bmar Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prmar Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">April</td>
+                        <td></td>
+                        <td>@ViewBag.papr Rs</td>
+                        <td>@ViewBag.paprl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.sapr Rs</td>
+                        <td>@ViewBag.saprl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.capr Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.staprp Rs</td> *@
+                        <td>@ViewBag.stapr Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bapr Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prapr Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">May</td>
+                        <td></td>
+                        <td>@ViewBag.pmay Rs</td>
+                        <td>@ViewBag.pmayl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.smay Rs</td>
+                        <td>@ViewBag.smayl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.cmay Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stmayp Rs</td> *@
+                        <td>@ViewBag.stmay Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bmay Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prmay Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">June</td>
+                        <td></td>
+                        <td>@ViewBag.pjun Rs</td>
+                        <td>@ViewBag.pjunl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.sjun Rs</td>
+                        <td>@ViewBag.sjunl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.cjun Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stjunp Rs</td> *@
+                        <td>@ViewBag.stjun Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bjun Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prjun Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">July</td>
+                        <td></td>
+                        <td>@ViewBag.pjul Rs</td>
+                        <td>@ViewBag.pjull Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.sjul Rs</td>
+                        <td>@ViewBag.sjull Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.cjul Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stjulp Rs</td> *@
+                        <td>@ViewBag.stjul Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bjul Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prjul Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">August</td>
+                        <td></td>
+                        <td>@ViewBag.paug Rs</td>
+                        <td>@ViewBag.paugl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.saug Rs</td>
+                        <td>@ViewBag.saugl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.caug Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.staugp Rs</td> *@
+                        <td>@ViewBag.staug Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.baug Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.praug Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">September</td>
+                        <td></td>
+                        <td>@ViewBag.psep Rs</td>
+                        <td>@ViewBag.psepl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.ssep Rs</td>
+                        <td>@ViewBag.ssepl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.csep Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stsepp Rs</td> *@
+                        <td>@ViewBag.stsep Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bsep Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prsep Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">October</td>
+                        <td></td>
+                        <td>@ViewBag.poct Rs</td>
+                        <td>@ViewBag.poctl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.soct Rs</td>
+                        <td>@ViewBag.soctl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.coct Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stoctp Rs</td> *@
+                        <td>@ViewBag.stoct Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.boct Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.proct Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">November</td>
+                        <td></td>
+                        <td>@ViewBag.pnov Rs</td>
+                        <td>@ViewBag.pnovl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.snov Rs</td>
+                        <td>@ViewBag.snovl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.cnov Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stnovp Rs</td> *@
+                        <td>@ViewBag.stnov Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bnov Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prnov Rs</td>
+                            }
+                        }
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">December</td>
+                        <td></td>
+                        <td>@ViewBag.pdec Rs</td>
+                        <td>@ViewBag.pdecl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.sdec Rs</td>
+                        <td>@ViewBag.sdecl Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.cdec Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td>@ViewBag.stdecp Rs</td> *@
+                        <td>@ViewBag.stdec Ltr</td>
+                        <td></td>
+                        <td>@ViewBag.bdec Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td>@ViewBag.prdec Rs</td>
+                            }
+                        }
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td style="font-weight:bold;">Total</td>
+                        <td></td>
+                        <td style="font-weight:bold;">@ViewBag.ptotal Rs</td>
+                        <td style="font-weight:bold;">@ViewBag.ptotall Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td style="font-weight:bold;">@ViewBag.stotal Rs</td>
+                        <td style="font-weight:bold;">@ViewBag.stotall Ltr</td>
+                        <td></td>
+                        <td></td>
+                        <td style="font-weight:bold;">@ViewBag.ctotal Rs</td>
+                        <td></td>
+                        <td></td>
+                        @* <td style="font-weight:bold;">@ViewBag.sttotalp Rs</td> *@
+                        <td style="font-weight:bold;">@ViewBag.sttotal Ltr</td>
+                        <td></td>
+                        <td style="font-weight:bold;">@ViewBag.btotal Rs</td>
+                        <td></td>
+                        @{
+                            if (Context.Session.GetString("role") == "1")
+                            {
+                                <td style="font-weight:bold;">@ViewBag.prtotal Rs</td>
+                            }
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

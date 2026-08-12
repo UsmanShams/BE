@@ -1,0 +1,50 @@
+﻿@model IEnumerable<be.Models.cus_pro>
+
+@{
+    ViewData["Title"] = "cus_pro";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 style="color:black;" class="card-title">Customer's Product Pricing</h2>
+            <h3 style="color:black;">@ViewBag.name</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Base Price
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @{
+                                BentContext db = new BentContext();
+                                var pro = db.Products.Where(x => x.PId == item.pid).First();
+                                <td>@pro.PName</td>
+                                <td>@pro.PPack</td>
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.baseprice)
+                            </td>
+                            <td>
+                                <a asp-action="cus_pro_price" asp-controller="edit" asp-route-id="@item.Id">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,275 @@
+﻿@model IEnumerable<be.Models.Customerledger>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Customer Ledger</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Open Sans', sans-serif;
+            background: #FFF;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0.5in;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1em;
+        }
+
+        header img {
+            max-height: 60px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+
+        article {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        address {
+            margin-bottom: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2em;
+            font-size: 0.8rem;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+
+        table.meta, table.balance {
+            width: 40%;
+            float: right;
+        }
+
+        .add {
+            border-top: 2px solid #333;
+        }
+
+        footer {
+            margin-top: 2em;
+            page-break-inside: avoid;
+        }
+
+            footer .row {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 1em;
+            }
+
+            footer p {
+                margin: 0.3em 0;
+                text-align: center;
+            }
+
+        /* Print styles */
+        @@media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                padding: 1cm;
+                display: flex;
+                flex-direction: column;
+                min-height: 100%;
+            }
+
+            article {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            footer {
+                page-break-inside: avoid;
+                margin-top: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="row">
+            <img src="~/front/assets/images/bilal_logo.jpg" alt="Logo" style="width: 25%;">
+            <div style="flex: 1;"></div>
+            <img src="~/front/assets/images/petromin_logo.jpg" alt="Logo" style="width: 25%;">
+        </div>
+        <h1>Customer Ledger</h1>
+    </header>
+
+    <article>
+        <div>
+            <address>
+                <p><strong>Customer Name:</strong> @ViewBag.cus</p>
+            </address>
+
+            <table class="meta">
+                <tr>
+                    <th>Date</th>
+                    <td>@DateTime.Now.ToString("dd-MM-yyyy") @DateTime.Now.ToShortTimeString()</td>
+                </tr>
+            </table>
+
+            <table class="inventory hh">
+                <thead>
+                    <tr>
+                        <th>
+                            Order #
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Time
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Qty)
+                        </th>
+                        <th>
+                            Credit
+                        </th>
+                        <th>
+                            Debit
+                        </th>
+                        <th>
+                            Balance
+                        </th>
+                    </tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        var bal = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Orderid)
+                            </td>
+                            <td>
+                                @item.day-@item.month-@item.year
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.time)
+                            </td>@{
+                                if (item.type == "Drum" || item.type == "Druml" || item.type == "Pail")
+                                {
+                                    BentContext db = new BentContext();
+                                    var x = db.Products.Where(x => x.PId == Convert.ToInt32(item.Description)).First();
+                                    <td>@x.PName</td>
+                                }
+                                else
+                                {
+                                    <td>@item.Description</td>
+                                }
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Qty)
+                            </td>
+                            @if (item.ClIn == 0)
+                            {
+                                <td>-</td>
+                            }
+                            else
+                            {
+                                <td>@item.ClIn</td>
+                            }
+                            @if (item.ClOut == 0)
+                            {
+                                <td>-</td>
+                            }
+                            else
+                            {
+                                <td>@item.ClOut</td>
+                            }
+                            @{
+                                if(item.ClIn == 0)
+                                {
+                                    bal = bal - Convert.ToInt32(item.ClOut);
+                                }
+                                else if (item.ClOut == 0)
+                                {
+                                    bal = bal + Convert.ToInt32(item.ClIn);
+                                }
+                            }
+                            <td>@bal</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @* <table class="balance">
+                <tr>
+                    <th><span>Total</span></th>
+                    @{
+                        var x12 = 0;
+                        foreach (var item1 in Model)
+                        {
+                            x12 = x12 + Convert.ToInt32(item1.PoPrice);
+                        }
+                        <td><span data-prefix>Rs : </span><span>@x12/=</span></td>
+                    }
+                </tr>
+                </tr>
+            </table> *@
+        </div>
+
+    </article>
+
+</body>
+</html>

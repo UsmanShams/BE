@@ -1,0 +1,110 @@
+﻿@model IEnumerable<be.Models.OrderNo>
+
+@{
+    ViewData["Title"] = "orno";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="order">Add Order</a>
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Order Table</h4>
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                        <th>
+                            Order #
+                        </th>
+                        <th>
+                            Customer
+                        </th>
+                        <th>Action</th>
+                        <th>
+                            Status
+                        </th>
+                        <th>Invoice</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                        
+                        <tr>
+                            <td>
+                                @item.OrdernoId
+                            </td>
+                            @{
+                                BentContext db = new BentContext();
+                                var x = db.Customers.Where(x => x.CId == Convert.ToInt32(item.Customer)).First();
+                                <td>@x.CName</td>
+                            }
+                        <td>
+                                <a asp-action="order" asp-controller="det" asp-route-id="@item.OrdernoId">Details</a>  
+                                @{
+
+                                    var x1 = db.Order.Where(x => x.OrUnique == item.OrdernoId);
+                                    var tqt = 0;
+                                    var tdel = 0;
+                                    foreach (var item1 in x1)
+                                    {
+                                        tqt = Convert.ToInt32(tqt + item1.Qty);
+                                        tdel = Convert.ToInt32(tdel + item1.delivered);
+                                    }
+                                    if (tqt == tdel)
+                                    {
+                                        var x11 = db.OrderNos.Where(x => x.OrdernoId == item.OrdernoId).First();
+                                        x11.OrdernoStatus = "yes";
+                                        db.SaveChanges();
+                                    }
+                                    if (tdel==0)
+                                    {
+                                        <a asp-action="order1" asp-controller="del" asp-route-id="@item.OrdernoId">Delete</a>
+                                    }
+                                }
+                            </td>
+                            @{
+                                var c1 = db.Order.Any(x => x.OrUnique == item.OrdernoId);
+                                if(c1 is true)
+                                {
+                                    var c = db.Order.Where(x => x.OrUnique == item.OrdernoId);
+                                    var tqt1 = 0;
+                                    var tdel1 = 0;
+                                    foreach (var item1 in c)
+                                    {
+                                        tqt1 = Convert.ToInt32(tqt + item1.Qty);
+                                        tdel1 = Convert.ToInt32(tdel + item1.delivered);
+
+                                    }
+                                    if (tqt1 != tdel1)
+                                    {
+                                        <td><a class="btn btn-danger">Pending</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td>Delivered</td>
+                                    }
+
+                                }
+                            }
+
+                            <td>
+                                <a asp-action="invoice" asp-controller="det" asp-route-id="@item.OrdernoId"><i class="fa-solid fa-print"></i></a>
+                            </td>
+                    </tr>
+                }
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>

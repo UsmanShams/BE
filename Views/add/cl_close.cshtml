@@ -1,0 +1,47 @@
+﻿@model be.Models.Customerledger
+@{
+    ViewData["Title"] = "Cheque";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Add Customer Closing</h1>
+            <br />
+            <form asp-controller="add" asp-action="cl_close">
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Customer</label>
+                    <div class="col-sm-9" ViewBag.name>
+                        <select asp-for="CName" class="form-control">
+                            <option value="@ViewBag.id">@ViewBag.name</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Credit</label>
+                    <div class="col-sm-9">
+                        <input asp-for="ClIn" class="form-control" placeholder="Enter Credit" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Debit</label>
+                    <div class="col-sm-9">
+                        <input asp-for="ClOut" class="form-control" placeholder="Enter Debit" />
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

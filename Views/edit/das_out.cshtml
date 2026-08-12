@@ -1,0 +1,47 @@
+﻿@model be.Models.Da
+
+@{
+    ViewData["Title"] = "Cheque";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Edit Das Payment</h1>
+            <br />
+            <form asp-controller="edit" asp-action="das">
+                <input asp-for="DasId" type="hidden" />
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Edit Expense</label>
+                    <div class="col-sm-9">
+                        <input asp-for="DasDescrition" class="form-control" placeholder="Enter Expense" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Edit Description</label>
+                    <div class="col-sm-9">
+                        <input asp-for="DasExpense" class="form-control" placeholder="Enter Description" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Edit Out</label>
+                    <div class="col-sm-9">
+                        <input asp-for="DasDeit" class="form-control" placeholder="Enter Out" />
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Edit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

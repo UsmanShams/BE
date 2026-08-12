@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Add Loose Qty</h1>
+            <br />
+            <form class="forms-sample" asp-controller="add" asp-action="loose_drum_manual">
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Select Customer</label>
+                    <div class="col-sm-9">
+                        <select name="cid" class="form-control">
+                            @{
+                                BentContext db = new BentContext();
+                                var res2 = db.Customers.Where(x => x.CName != "Bilal Associate" && x.CStatus == "Active").OrderBy(x=>x.CName).ToList();
+                                var res1 = db.Customers.Where(x => x.CName == "Bilal Associate").First();
+
+                                <option value="@res1.CId">@res1.CName</option>
+                                foreach (var item in res2)
+                                {
+                                    <option value="@item.CId">@item.CName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Select Product</label>
+                    <div class="col-sm-9">
+                        <select name="pid" class="form-control">
+                            @{
+                                var res = db.Products.ToList();
+                                foreach (var item in res)
+                                {
+                                    <option value="@item.PId">@item.PName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter Qty</label>
+                    <div class="col-sm-9 ">
+                        <input name="qty" type="int" class="form-control" />
+                    </div>
+                <br />
+                <button type="submit" class="btn btn-primary mr-2">Add Qty</button>
+            </form>
+        </div>
+    </div>
+</div>

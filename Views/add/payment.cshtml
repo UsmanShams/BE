@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Payment Type</h1>
+            <br />
+            <form class="forms-sample" asp-controller="add" asp-action="payment">
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Select Type</label>
+                    <div class="col-sm-9">
+                        <select name="type" class="form-control">
+                            <option value="1">Customer Payment</option>
+                            <option value="0">Vendor Payment</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Enter</button>
+            </form>
+        </div>
+    </div>
+</div>

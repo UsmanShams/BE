@@ -1,0 +1,117 @@
+﻿@model IEnumerable<be.Models.Order>
+
+@{
+    ViewData["Title"] = "order";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<br />
+<br />
+
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="search_pending">Search</a>
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Pending Order Details</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>
+                            Customer
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Total Ltr
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @{
+                                BentContext db = new BentContext();
+                                var x = db.Customers.Where(x => x.CId == item.CId).First();
+                                var x1 = db.Products.Where(x => x.PId == item.PId).First();
+                                var rem = item.Qty - item.delivered;
+                                var price = x1.PPack * rem * item.OPrice;
+                                var ltr = x1.PPack * rem;
+                                var pr = item.OPrice * rem;
+                                if(rem >0){
+                                    <td>@item.OrUnique</td>
+                                    <td>@x.CName</td>
+                                    <td>@x1.PName</td>
+                                    <td>
+                                        @rem
+                                    </td>
+                                    <td>@x1.PPack</td>
+                                    <td>@ltr</td>
+                                    <td>@pr</td>
+                                    if (rem != 0)
+                                    {
+                                        <td><a class="btn btn-danger" asp-controller="add" asp-action="ss1" asp-route-id="@item.OId">Pending?</a></td>
+                                    }
+                                    else
+                                    {
+                                        <td>Delivered</td>
+                                    }
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+
+                @{
+
+                    BentContext db1 = new BentContext();
+                    var t_pr = 0;
+                    var t_ltr = 0;
+                    var tqt = 0;
+                    foreach (var item in Model)
+                    {
+                        var rem1 = item.Qty - item.delivered;
+                        if (rem1 > 0)
+                        {
+                            var r = db1.Products.Where(x => x.PId == Convert.ToInt32(item.PId)).First();
+                            t_pr = t_pr + Convert.ToInt32(item.OPrice * item.Qty * r.PPack);
+                            t_ltr = Convert.ToInt32(t_ltr + (r.PPack * rem1));
+                            tqt = tqt + Convert.ToInt32(rem1);
+                        }
+                    }
+
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>@tqt</td>
+                            <td></td>
+                            <td>@t_ltr</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    }
+            </table>
+        </div>
+    </div>
+</div>

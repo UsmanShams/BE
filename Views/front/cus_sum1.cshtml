@@ -1,0 +1,103 @@
+﻿@{
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 style="color:black;">
+                @ViewBag.name @DateTime.Now.Day-@DateTime.Now.Month-@DateTime.Now.Year @DateTime.Now.ToShortTimeString()
+            </h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Months
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            Sales
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td style="font-weight:bold;">Rs</td>
+                        <td style="font-weight:bold;">Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">January</td>
+                        <td>@ViewBag.jan Rs</td>
+                        <td>@ViewBag.janl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Feburary</td>
+                        <td>@ViewBag.feb Rs</td>
+                        <td>@ViewBag.febl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">March</td>
+                        <td>@ViewBag.mar Rs</td>
+                        <td>@ViewBag.marl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">April</td>
+                        <td>@ViewBag.apr Rs</td>
+                        <td>@ViewBag.aprl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">May</td>
+                        <td>@ViewBag.may Rs</td>
+                        <td>@ViewBag.mayl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">June</td>
+                        <td>@ViewBag.jun Rs</td>
+                        <td>@ViewBag.junl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">July</td>
+                        <td>@ViewBag.jul Rs</td>
+                        <td>@ViewBag.jull Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">August</td>
+                        <td>@ViewBag.aug Rs</td>
+                        <td>@ViewBag.augl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">September</td>
+                        <td>@ViewBag.sep Rs</td>
+                        <td>@ViewBag.sepl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">October</td>
+                        <td>@ViewBag.oct Rs</td>
+                        <td>@ViewBag.octl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">November</td>
+                        <td>@ViewBag.nov Rs</td>
+                        <td>@ViewBag.novl Ltr</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">December</td>
+                        <td>@ViewBag.dec Rs</td>
+                        <td>@ViewBag.decl Ltr</td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td style="font-weight:bold;">Total</td>
+                        <td style ="font-weight:bold;">@ViewBag.total Rs</td>
+                        <td style="font-weight:bold;">@ViewBag.totall Ltr</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

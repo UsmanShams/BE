@@ -1,0 +1,43 @@
+﻿@model be.Models.Po
+
+
+@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add More Product</h4>
+            <form class="forms-sample" asp-controller="add" asp-action="det_po">
+                @{
+                    if (TempData.ContainsKey("mess"))
+                    {
+                        <span class="text-danger">@TempData["mess"]</span>
+                    }
+                }
+                <input asp-for="PoUnique" type="hidden" class="form-control" value="@ViewBag.id" required />
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Product</label>
+                    <div class="col-sm-9">
+                        <select asp-for="PId" class="form-control" asp-items="@ViewBag.PId"></select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Qty</label>
+                    <div class="col-sm-9">
+                        <input asp-for="PoQty" class="form-control" placeholder="Enter Qty" required />
+                    </div>
+                </div>
+                @* <div class="form-group row">
+                <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Price</label>
+                <div class="col-sm-9">
+                <input asp-for="PoPrice" class="form-control" placeholder="Enter Price If You Want To Change"/>
+                </div>
+                </div> *@
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

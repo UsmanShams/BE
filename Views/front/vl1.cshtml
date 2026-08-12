@@ -1,0 +1,98 @@
+﻿@model IEnumerable<be.Models.Vendorledger>
+
+@{
+    ViewData["Title"] = "vl1";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="vl_close" asp-route-id="@ViewBag.iid">Add Closing</a>
+<br />
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="filter" asp-action="ag_vl" asp-route-id="@ViewBag.iid">Aging</a>
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Vendor Ledger</h2>
+            <h3 style="color:black;">@ViewBag.name</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Order #
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Time
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Qty)
+                        </th>
+                        <th>
+                            Credit
+                        </th>
+                        <th>
+                            Debit
+                        </th>
+                        <th>
+                            Balance
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                BE-@Html.DisplayFor(modelItem => item.Orderid)
+                            </td>
+                            <td>
+                                @item.day-@item.month-@item.year
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.time)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Qty)
+                            </td>
+                            @if (item.VlIn == 0)
+                            {
+                                <td>-</td>
+                            }
+                            else
+                            {
+                                <td>@item.VlIn</td>
+                            }
+                            @if (item.VlOut == 0)
+                            {
+                                <td>-</td>
+                            }
+                            else
+                            {
+                                <td>@item.VlOut</td>
+                            }
+                            @{
+                                if (item.VlBalance < 0)
+                                {
+                                    var x = item.VlBalance * -1;
+                                    <td>(@x)</td>
+                                }
+                                else
+                                {
+                                    <td>@item.VlBalance</td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

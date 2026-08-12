@@ -1,0 +1,42 @@
+﻿@model be.Models.Vender
+
+@{
+    ViewData["Title"] = "vendor";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Update Vendor</h4>
+            <form class="forms-sample" asp-controller="edit" asp-action="vendor">
+                <input type="hidden" asp-for="VId" />
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Vendor Name</label>
+                    <div class="col-sm-9">
+                        <input asp-for="VName" class="form-control" placeholder="Enter Name" required/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input asp-for="VEmail" class="form-control" placeholder="Enter Email" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Phone</label>
+                    <div class="col-sm-9">
+                        <input asp-for="VPhone" class="form-control" placeholder="Enter Phone" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Ntn</label>
+                    <div class="col-sm-9">
+                        <input asp-for="VNtn" class="form-control" placeholder="Enter Ntn" required />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

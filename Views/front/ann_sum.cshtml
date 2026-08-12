@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Annual Summary</h4>
+            <form class="forms-sample" asp-controller="front" asp-action="ann_sum1">
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Enter Year</label>
+                    <div class="col-sm-9">
+                        <input name="year" type="int" class="form-control" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

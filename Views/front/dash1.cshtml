@@ -1,0 +1,472 @@
+﻿@{
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --be-red: #c8281f;
+        --be-red-deep: #a01a13;
+        --be-orange: #e87b18;
+        --be-orange-soft: #f0922e;
+        --be-ink: #1a1614;
+        --be-muted: #8a7d76;
+        --be-line: #efe4dc;
+        --be-bg: #f6f0eb;
+    }
+
+    /* page atmosphere */
+    .be-dash {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        padding: 8px 4px 48px;
+        position: relative;
+    }
+
+    /* ===== Header ===== */
+    .be-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 8px 0 24px;
+        padding: 16px 22px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--be-red) 0%, var(--be-red-deep) 70%, #7c150f 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .be-head::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(240,146,46,.45), transparent 70%);
+        }
+
+        .be-head .be-pulse {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            background: rgba(255,255,255,.16);
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+
+        .be-head h1 {
+            font-family: 'Outfit', sans-serif;
+            color: #fff;
+            font-weight: 800;
+            font-size: clamp(1.15rem, 2.4vw, 1.7rem);
+            letter-spacing: -.02em;
+            margin: 0;
+            line-height: 1.25;
+            position: relative;
+            z-index: 2;
+        }
+
+            .be-head h1 .be-sub {
+                display: block;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 500;
+                font-size: .82rem;
+                letter-spacing: .02em;
+                color: rgba(255,255,255,.82);
+                margin-top: 4px;
+            }
+
+    /* ===== Grid layout (replaces vw/vh flex rows) ===== */
+    .be-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 22px;
+        margin-bottom: 22px;
+    }
+
+    /* ===== Stat card ===== */
+    .stat-card {
+        background: #fff;
+        color: var(--be-ink);
+        padding: 16px 18px;
+        border-radius: 15px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        border: 1px solid var(--be-line);
+        position: relative;
+        overflow: hidden;
+        transition: transform .22s cubic-bezier(.2,.7,.2,1), border-color .22s;
+        animation: be-rise .5s cubic-bezier(.2,.7,.2,1) both;
+    }
+        /* accent bar */
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: linear-gradient(180deg, var(--be-red), var(--be-orange));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: #f3d6cf;
+        }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        border-bottom: 1px solid var(--be-line);
+        padding-bottom: 10px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .label {
+        font-family: 'Outfit', sans-serif;
+        font-size: .85rem;
+        font-weight: 600;
+        letter-spacing: .01em;
+    }
+
+        .label a {
+            color: var(--be-ink) !important;
+            text-decoration: none;
+            transition: color .18s;
+        }
+
+            .label a:hover {
+                color: var(--be-red) !important;
+            }
+
+    .icon {
+        background: linear-gradient(135deg, var(--be-red), var(--be-red-deep));
+        width: 30px;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        border-radius: 9px;
+        font-size: .82rem;
+        color: #fff;
+    }
+
+    .value {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 800;
+        letter-spacing: -.01em;
+        line-height: 1.3;
+        color: var(--be-ink);
+        position: relative;
+        z-index: 2;
+        font-size: 1.35rem !important;
+    }
+
+        .value a {
+            color: var(--be-red) !important;
+            text-decoration: none;
+        }
+
+            .value a:hover {
+                text-decoration: underline;
+            }
+
+    /* original .row becomes the responsive grid; spacers/wrappers pass through */
+    .row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-bottom: 16px;
+        width: 100%;
+        height: auto;
+    }
+
+    .row1 {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .hh {
+        display: none;
+    }
+
+    .part1, .part2 {
+        display: contents;
+    }
+
+    .row > br {
+        display: none;
+    }
+
+    @@keyframes be-rise {
+        from {
+            opacity: 0;
+            transform: translateY(18px);
+        }
+
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+
+    .be-grid .stat-card:nth-child(2) {
+        animation-delay: .07s;
+    }
+
+    .be-grid .stat-card:nth-child(3) {
+        animation-delay: .14s;
+    }
+
+    .be-grid .stat-card:nth-child(4) {
+        animation-delay: .21s;
+    }
+
+    @@media (max-width: 1150px) {
+        .be-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+
+<body>
+    <div class="be-dash">
+        <div class="row1">
+            <div class="be-head">
+                <div class="be-pulse"><i class="fa fa-bar-chart"></i></div>
+                <h1 style="color:black;">
+                    <span style="color:#fff;">Summary</span>
+                    <span class="be-sub">
+                        Date: @DateTime.Now.Day-@DateTime.Now.Month-@DateTime.Now.Year &nbsp;&bull;&nbsp; Time: @DateTime.Now.ToShortTimeString()
+                    </span>
+                </h1>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="hh"></div>
+
+
+            <div class="part1">
+                <div class="stat-card">
+                    <div class="card-header">
+                        <span class="label"><a asp-action="ps" asp-controller="front">Primary Sales </a></span>
+                        <div class="icon">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                    </div>
+                    <div class="value" style="font-size:5vh;">Rs @ViewBag.tpr11/= <br /> @ViewBag.pr_ltr Ltr <br /> <span style="visibility:hidden">h</span></div>
+                </div>
+            </div>
+
+            <div class="hh"></div>
+
+            <div class="part1">
+
+                <div class="stat-card">
+                    <div class="card-header">
+                        <span class="label"><a asp-action="ss" asp-controller="front">Secondary Sales</a></span>
+                        <div class="icon">
+                            <i class="fa fa-area-chart"></i>
+                        </div>
+                    </div>
+                    <div class="value" style="font-size:5vh;">Rs @ViewBag.tpr1/= <br /> @ViewBag.ss_ltr Ltr<br /> <span style="visibility:hidden">h</span></div>
+                </div>
+
+            </div>
+
+            <div class="hh"></div>
+
+            <div class="part1">
+                @{
+                    if (Context.Session.GetString("role") == "1")
+                    {
+
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label"><a asp-controller="front" asp-action="stock">Profit</a></span>
+                                <div class="icon">
+                                    <i class="fa fa-money"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:5vh;">Rs @ViewBag.profit/=<br /> <span style="visibility:hidden">h</span><br /> <span style="visibility:hidden">h</span></div>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label"><a asp-controller="front" asp-action="stock">Stock</a></span>
+                                <div class="icon">
+                                    <i class="fa fa-cubes"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:5vh;">@ViewBag.tqt1 Units  <br /> @ViewBag.tltr Ltr</div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+
+        @* SECOND PART *@
+
+        <br /><br />
+        <div class="row">
+            <div class="hh"></div>
+
+            <div class="part1">
+                @{
+                    if (Context.Session.GetString("role") == "1")
+                    {
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label"><a asp-controller="front" asp-action="stock">Stock</a></span>
+                                <div class="icon">
+                                    <i class="fa fa-cubes"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:5vh;">@ViewBag.tqt1 Units  <br /> @ViewBag.tltr Ltr</div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label"><a asp-action="mcr" asp-controller="front">MCR</a></span>
+                                <div class="icon">
+                                    <i class="fa fa-file-text"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:5vh;">Rs @ViewBag.bal/=<br /> <span style="visibility:hidden">h</span><br /> <span style="visibility:hidden">h</span></div>
+                        </div>
+                    }
+                }
+
+            </div>
+
+            <div class="hh"></div>
+
+
+            <br />
+            <div class="part1">
+                @{
+                    if (Context.Session.GetString("role") == "1")
+                    {
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label"><a asp-action="mcr" asp-controller="front">MCR</a></span>
+                                <div class="icon">
+                                    <i class="fa fa-file-text"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:5vh;">Rs @ViewBag.bal/=<br /> <span style="visibility:hidden">h</span><br /> <span style="visibility:hidden">h</span></div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label"><a asp-controller="front" asp-action="bank_statement">Banks</a></span>
+                                <div class="icon">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:5vh;">Rs @ViewBag.bank/=<br /> <span style="visibility:hidden">h</span><br /> <span style="visibility:hidden">h</span></div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="hh"></div>
+
+            <div class="part2">
+                @{
+                    if (Context.Session.GetString("role") == "1")
+                    {
+
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label"><a asp-controller="front" asp-action="bank_statement">Banks</a></span>
+                                <div class="icon">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:5vh;">Rs @ViewBag.bank/=<br /> <span style="visibility:hidden">h</span><br /> <span style="visibility:hidden">h</span></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label">Summary</span>
+                                <div class="icon">
+                                    <i class="fa fa-pie-chart"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:4vh;">
+                                <a asp-action="ann_sum" asp-controller="front">Annual Summary<br /> <span style="visibility:hidden">h</span><br /> <span style="visibility:hidden">h</span></a>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+
+
+
+        </div>
+
+        @* Third PART *@
+
+        <br />
+        <br />
+        @{
+            if (Context.Session.GetString("role") == "1")
+            {
+                <div class="row">
+
+                    <div class="hh"></div>
+
+
+                    <br />
+                    <div class="part1">
+                        <div class="stat-card">
+                            <div class="card-header">
+                                <span class="label">Summary</span>
+                                <div class="icon">
+                                    <i class="fa fa-pie-chart"></i>
+                                </div>
+                            </div>
+                            <div class="value" style="font-size:4vh;">
+                                <a asp-action="ann_sum" asp-controller="front">Annual Summary<br /> <span style="visibility:hidden">h</span><br /> <span style="visibility:hidden">h</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hh"></div>
+
+                </div>
+            }
+        }
+    </div>
+</body>
+
+</html>

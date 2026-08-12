@@ -1,0 +1,34 @@
+﻿@model be.Models.Primarysale
+@{
+    ViewData["Title"] = "Cheque";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Add Primary Sales Closing</h1>
+            <br />
+            <form asp-controller="add" asp-action="ps1">
+
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter Closing Amount</label>
+                    <div class="col-sm-9">
+                        <input name="amount" class="form-control" placeholder="Enter Closing Amount" />
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

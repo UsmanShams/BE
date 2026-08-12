@@ -1,0 +1,25 @@
+# Build results
+[Bb]in/
+[Ob]j/
+[LGs]og/
+[LGs]ogs/
+
+# Visual Studio / VS Code IDE settings
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific configuration
+.config/
+
+# Environment settings containing sensitive keys or secrets
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+*.secrets.json
+
+# OS-generated files
+.DS_Store
+Thumbs.db

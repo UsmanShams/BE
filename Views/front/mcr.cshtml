@@ -1,0 +1,72 @@
+﻿@model IEnumerable<be.Models.Customer>
+
+@{
+    ViewData["Title"] = "customer";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+</style>
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="front" asp-action="mcr_search">Search</a>
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 style="color:black;" >Market Credit Report</h2>
+            <h4 class="card-title">Total Credit: @ViewBag.bal</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Customer Name
+                        </th>
+                        <th>
+                            Credit
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-controller="front" asp-action="cl1" asp-route-id="@item.CId"> @item.CName</a>
+                            </td>
+                            @{
+                                BentContext db = new BentContext();
+                                var r1 = db.Customerledger.Any(x => x.CName == Convert.ToString(item.CId));
+                                var bal = 0;
+                                if(r1 is true)
+                                {
+                                    var xx = db.Customerledger.Where(x => x.CName == Convert.ToString(item.CId)).OrderBy(x => x.date).ToList();
+                                    foreach (var item1 in xx)
+                                    {
+                                        item1.ClBalance = bal + item1.ClIn - item1.ClOut;
+                                        bal = Convert.ToInt32(item1.ClBalance);
+                                        db.SaveChanges();
+                                    }
+                                    <td>@bal</td>
+                                }
+                                else
+                                {
+                                    <td>0</td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>@ViewBag.bal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

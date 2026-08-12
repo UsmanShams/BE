@@ -1,0 +1,87 @@
+﻿@model IEnumerable<be.Models.Da>
+
+@{
+    ViewData["Title"] = "das";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+<br />
+<a class="btn btn-secondary btn-fw" asp-controller="front" asp-action="das">Product</a>
+
+
+<br />
+<br />
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="das">Add DAS</a>
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="filter" asp-action="ag_das">Aging</a>
+<a class="btn btn-secondary btn-rounded btn-fw" asp-controller="filter" asp-action="das">Share <i class="fa-solid fa-share-nodes"></i></a>
+<br />
+<br />
+
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Daily Activity Sheet (Payment)</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Expense
+                        </th>
+                        <th>
+                            Credit
+                        </th>
+                        <th>
+                            Debit
+                        </th>
+                        <th>
+                            Balance
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.day-@item.month-@item.year
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DasDescrition)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DasExpense)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DasCredit)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DasDeit)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DasBalance)
+                            </td>
+                            @{
+                                if (item.typ1 == "dd")
+                                {
+                                    <td>
+                                        <a asp-action="das" asp-controller="edit" asp-route-id="@item.DasId">Edit</a> |
+                                        <a asp-action="das" asp-controller="del" asp-route-id="@item.DasId">Delete</a>
+                                    </td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

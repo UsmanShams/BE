@@ -1,0 +1,29 @@
+﻿@model be.Models.cus_pro
+
+@{
+    ViewData["Title"] = "cus_pro_price";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Edit Price</h1>
+            <br />
+            <form asp-action="cus_pro" asp-controller="add">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input name="iid" type="hidden" asp-for="Id" />
+                <input name="cid" type="hidden" asp-for="cid" />
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter Amount</label>
+                    <div class="col-sm-9">
+                        <input name="bs" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

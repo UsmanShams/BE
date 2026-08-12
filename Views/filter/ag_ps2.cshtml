@@ -1,0 +1,157 @@
+﻿@model IEnumerable<be.Models.Primarysale>
+
+@{
+    ViewData["Title"] = "ps";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<br />
+<br />
+
+@* <a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="search_ps">Search</a> *@
+<a class="btn btn-primary btn-rounded btn-fw" asp-controller="filter" asp-action="ag_ps">Aging</a>
+<a class="btn btn-secondary btn-rounded btn-fw" asp-controller="filter" asp-action="ps">Share <i class="fa-solid fa-share-nodes"></i></a>
+
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Primary Sales</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Order #
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Purchase <br /> From
+                        </th>
+                        <th>
+                            D/C No
+                        </th>
+                        @* <th>
+                        Date
+                        </th> *@
+                        <th style="width:30%;">
+                            Product
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Ltr
+                        </th>
+                        <th>
+                            Rate
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>BE-@item.OrderID</td>
+                            @{
+                                if (item.month == "1")
+                                {
+                                    <td>@item.day-Jan-@item.year</td>
+                                }
+                                else if (item.month == "2")
+                                {
+                                    <td>@item.day-Feb-@item.year</td>
+                                }
+                                else if (item.month == "3")
+                                {
+                                    <td>@item.day-Mar-@item.year</td>
+                                }
+                                else if (item.month == "4")
+                                {
+                                    <td>@item.day-Apr-@item.year</td>
+                                }
+                                else if (item.month == "5")
+                                {
+                                    <td>@item.day-May-@item.year</td>
+                                }
+                                else if (item.month == "6")
+                                {
+                                    <td>@item.day-Jun-@item.year</td>
+                                }
+                                else if (item.month == "7")
+                                {
+                                    <td>@item.day-Jul-@item.year</td>
+                                }
+                                else if (item.month == "8")
+                                {
+                                    <td>@item.day-Aug-@item.year</td>
+                                }
+                                else if (item.month == "9")
+                                {
+                                    <td>@item.day-Sep-@item.year</td>
+                                }
+                                else if (item.month == "10")
+                                {
+                                    <td>@item.day-Oct-@item.year</td>
+                                }
+                                else if (item.month == "11")
+                                {
+                                    <td>@item.day-Nov-@item.year</td>
+                                }
+                                else if (item.month == "12")
+                                {
+                                    <td>@item.day-Dec-@item.year</td>
+                                }
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DcNo)
+                            </td>
+                            @* <td>
+                        @Html.DisplayFor(modelItem => item.PsDate)
+                        </td> *@
+                            @{
+                                BentContext db = new BentContext();
+                                var r = db.Products.Where(x => x.PId == Convert.ToInt32(item.PName)).First();
+                                var ltr = r.PPack * item.PsQty;
+                                <td style="width:30%;">@r.PName</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PsPack)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PsQty)
+                                </td>
+                                <td>@ltr</td>
+                                <td>@item.Price</td>
+                                <td>@item.Total</td>
+                            }
+
+                        </tr>
+                    }
+                </tbody>
+                <tbody>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="font-weight:bold;">@ViewBag.tqt</td>
+                <td style="font-weight:bold;">@ViewBag.tltr LTR</td>
+                <td></td>
+                <td style="font-weight:bold;">@ViewBag.tpr/=</td>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

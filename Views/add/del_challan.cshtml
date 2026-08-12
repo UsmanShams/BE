@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "bank_detail";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Add Delivery Challan</h1>
+            <br />
+            <form asp-controller="add" asp-action="del_challan">
+                @* <input type="hidden" name="id" value="@ViewBag.id" /> *@
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter Secondary Sales Id</label>
+                    <div class="col-sm-9">
+                        <select name="id1" class="form-control" >
+                            @{
+                                BentContext db = new BentContext();
+                                var x = db.Secondarysales.Where(x => x.Status == 0 && x.Type == "Drum").ToList();
+                                foreach(var item in x)
+                                {
+                                    var cus = db.Customers.Where(x => x.CId == item.CId).First();
+                                    var pro = db.Products.Where(x => x.PId == item.PId).First();
+                                    <option value="@item.SsId">@item.SsId,@cus.CName,@pro.PName</option>
+                                }
+                            }
+                        </select>
+                        @{
+                            if (TempData.ContainsKey("data"))
+                            {
+                                <span class="text-danger">@TempData["data"]</span>
+                            }
+                        }
+                    </div>
+                    <br />
+                    <br />
+                    <button type="submit" class="btn btn-primary mr-2" asp-route-id="0">Submit</button>
+                    <button type="submit" class="btn btn-primary mr-2" asp-route-id="1">Add 1 More</button>
+                    <button type="submit" class="btn btn-primary mr-2" asp-action="del_challan" asp-controller="front">End</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

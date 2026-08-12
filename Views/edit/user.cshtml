@@ -1,0 +1,51 @@
+﻿@model be.Models.User
+
+@{
+    ViewData["Title"] = "user";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Update User</h4>
+            <form class="forms-sample" asp-controller="edit" asp-action="user">
+                <input type="hidden" asp-for="UId" />
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                        <input asp-for="UName" class="form-control" placeholder="Username" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                        <input asp-for="UEmail" class="form-control" placeholder="Add Email" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Phone</label>
+                    <div class="col-sm-9">
+                        <input asp-for="UPhone" class="form-control" placeholder="Add Phone" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Role</label>
+                    <div class="col-sm-9">
+                        <select asp-for="URole" class="form-control">
+                            <option value="0">User</option>
+                            <option value="1">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Password</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Pass" class="form-control" placeholder="Add Pasword" required />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

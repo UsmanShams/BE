@@ -1,0 +1,52 @@
+﻿@model be.Models.Da
+
+@{
+    ViewData["Title"] = "Cheque";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Add Das Payment</h1>
+            <br />
+            <form asp-controller="add" asp-action="das">
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Expense</label>
+                    <div class="col-sm-9">
+                        <input asp-for="DasDescrition" class="form-control" placeholder="Enter Expense" required/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Description</label>
+                    <div class="col-sm-9">
+                        <input asp-for="DasExpense" class="form-control" placeholder="Enter Description" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">In</label>
+                    <div class="col-sm-9">
+                        <input asp-for="DasCredit" class="form-control" placeholder="Enter In" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Out</label>
+                    <div class="col-sm-9">
+                        <input asp-for="DasDeit" class="form-control" placeholder="Enter Out"  />
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

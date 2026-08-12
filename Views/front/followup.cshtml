@@ -1,0 +1,58 @@
+﻿@{
+    if (Context.Session.GetString("role") == "0")
+    {
+        <script>
+            // Redirect to a specific URL after the page loads
+            window.location.href = '@Url.Action("dash1", "front")';
+        </script>
+    }
+}
+@model IEnumerable<be.Models.Followup>
+
+@{
+    ViewData["Title"] = "followup";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<br />
+<br />
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Login History</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            User Name
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Time
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @{
+                                BentContext db = new BentContext();
+                                var x = db.Users.Where(x => x.UId == Convert.ToInt32(item.CName)).First();
+                                <td>@x.UName</td>
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FuEntered)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FuDescription)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

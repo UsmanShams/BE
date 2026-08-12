@@ -1,0 +1,291 @@
+﻿@model IEnumerable<be.Models.cheque>
+
+@{
+    ViewData["Title"] = "cheque";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<style>
+    .btn-primary.btn-rounded.btn-fw:hover {
+        background: #a01a13 !important; /* darker logo red */
+        border-color: #a01a13 !important;
+        color: #ffffff !important;
+    }
+
+</style>
+<style>
+    .product-link {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 2px;
+        color: #b91c1c;
+        text-decoration: none !important;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+        .product-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: #b91c1c;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .product-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .product-link svg {
+            flex-shrink: 0;
+        }
+</style>
+<div class="container">
+    <div class="container">
+        <div class="container">
+
+            <br />
+            <a asp-controller="front" asp-action="payment" class="product-link">
+                Cash/Online Payment
+            </a>
+            <br />
+            <br />
+            <a class="btn btn-primary btn-rounded btn-fw" asp-controller="add" asp-action="cheq_pay">Add Cheque</a>
+
+            <br />
+            <br />
+            <a asp-controller="front" asp-action="cheque" asp-route-id="1" class="product-link">
+                Petromin Cheques
+            </a>
+            -
+            <a asp-controller="front" asp-action="cheque" asp-route-id="2" class="product-link">
+                Customers
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h2 style="color:black;">Cheque Payments</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Time)
+                        </th>
+                        <th>
+                            Cheque From
+                        </th>
+                        <th>
+                            Amount
+                        </th>
+                        <th>
+                            Bank
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            PDC_Date
+                        </th>
+                        <th>
+                            PDC_Bank
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Time)
+                            </td>
+                            @{
+                                BentContext db = new BentContext();
+                                if(item.Type == "pet")
+                                {
+                                    var x = db.Venders.Where(x => x.VId == item.CName).First();
+                                    <td>@x.VName</td>
+                                }
+                                else if (item.Type == "cus")
+                                {
+                                    var x = db.Customers.Where(x => x.CId == item.CName).First();
+                                    <td>@x.CName</td>
+                                }
+                            }
+                            <td>@item.Amount</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cheque_of)
+                            </td>
+                            @{
+                                if (item.Month == 1)
+                                {
+                                    <td>@item.Day-Jan-@item.Year</td>
+                                }
+                                else if (item.Month == 2)
+                                {
+                                    <td>@item.Day-Feb-@item.Year</td>
+                                }
+                                else if (item.Month == 3)
+                                {
+                                    <td>@item.Day-Mar-@item.Year</td>
+                                }
+                                else if (item.Month == 4)
+                                {
+                                    <td>@item.Day-Apr-@item.Year</td>
+                                }
+                                else if (item.Month == 5)
+                                {
+                                    <td>@item.Day-May-@item.Year</td>
+                                }
+                                else if (item.Month == 6)
+                                {
+                                    <td>@item.Day-Jun-@item.Year</td>
+                                }
+                                else if (item.Month == 7)
+                                {
+                                    <td>@item.Day-Jul-@item.Year</td>
+                                }
+                                else if (item.Month == 8)
+                                {
+                                    <td>@item.Day-Aug-@item.Year</td>
+                                }
+                                else if (item.Month == 9)
+                                {
+                                    <td>@item.Day-Sep-@item.Year</td>
+                                }
+                                else if (item.Month == 10)
+                                {
+                                    <td>@item.Day-Oct-@item.Year</td>
+                                }
+                                else if (item.Month == 11)
+                                {
+                                    <td>@item.Day-Nov-@item.Year</td>
+                                }
+                                else if (item.Month == 12)
+                                {
+                                    <td>@item.Day-Dec-@item.Year</td>
+                                }
+                            }
+                            @{
+                                if (item.Pdc_Month == 1)
+                                {
+                                    <td>@item.Pdc_Day-Jan-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 2)
+                                {
+                                    <td>@item.Pdc_Day-Feb-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 3)
+                                {
+                                    <td>@item.Pdc_Day-Mar-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 4)
+                                {
+                                    <td>@item.Pdc_Day-Apr-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 5)
+                                {
+                                    <td>@item.Pdc_Day-May-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 6)
+                                {
+                                    <td>@item.Pdc_Day-Jun-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 7)
+                                {
+                                    <td>@item.Pdc_Day-Jul-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 8)
+                                {
+                                    <td>@item.Pdc_Day-Aug-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 9)
+                                {
+                                    <td>@item.Pdc_Day-Sep-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 10)
+                                {
+                                    <td>@item.Pdc_Day-Oct-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 11)
+                                {
+                                    <td>@item.Pdc_Day-Nov-@item.Pdc_Year</td>
+                                }
+                                else if (item.Pdc_Month == 12)
+                                {
+                                    <td>@item.Pdc_Day-Dec-@item.Pdc_Year</td>
+                                }
+                            }
+                                @{
+
+                                    if (item.Transfer_to == "0")
+                                    {
+                                    <td>Cash</td>
+                                }
+                                else
+                                {
+                                    if(item.Type == "cus")
+                                    {
+                                        var bank = db.Bankstatements.Where(x => x.BsId == Convert.ToInt32(item.Transfer_to)).First();
+                                        <td>@bank.Bankname</td>
+                                    }
+                                    else
+                                    {
+                                        <td>@item.Transfer_to</td>
+                                    }
+                                }
+                                }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            @{
+                                if(item.Status == 0)
+                                {
+                                    <td>
+                                        <a class="btn btn-danger" asp-controller="add" asp-route-id="@item.Ch_Id" asp-route-type="@item.Type" asp-action="cheque_det">Cleared ?</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="cheque" asp-controller="edit" asp-route-id="@item.Ch_Id">Edit</a> |
+                                        <a asp-action="cheque" asp-controller="del" asp-route-id="@item.Ch_Id">Delete</a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>Recieved</td>
+                                    <td><a class="btn btn-primary" asp-controller="edit" asp-route-id="@item.Ch_Id" asp-action="undo_cheque">Undo</a></td>
+                                }
+                                }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

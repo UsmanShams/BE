@@ -1,0 +1,46 @@
+﻿@model be.Models.BankDetail
+
+@{
+    ViewData["Title"] = "bank_detail";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h1 style="color:black;">Add Payment In Bank</h1>
+            <br />
+            <form asp-action="bank_detail" asp-controller="add" asp-action="bank_detail">
+                <input type="hidden" name="id" value="@ViewBag.id" />
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter Sender Name</label>
+                    <div class="col-sm-9">
+                        <input asp-for="BdSender" class="form-control" placeholder="Enter Sender Name" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter In Amount</label>
+                    <div class="col-sm-9">
+                        <input asp-for="BdIn" class="form-control" placeholder="Enter In Amount" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter Out Amount</label>
+                    <div class="col-sm-9">
+                        <input asp-for="BdOut" class="form-control" placeholder="Enter Out Amount" />
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

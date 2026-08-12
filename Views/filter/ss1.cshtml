@@ -1,0 +1,271 @@
+﻿@model IEnumerable<be.Models.Secondarysale>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Secondary Sales</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Open Sans', sans-serif;
+            background: #FFF;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 0.5in;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            letter-spacing: 0.2em;
+            margin-bottom: 1em;
+        }
+
+        header img {
+            max-height: 60px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1em;
+        }
+
+        article {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        address {
+            margin-bottom: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2em;
+            font-size: 0.8rem;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.5em;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+
+        table.meta, table.balance {
+            width: 40%;
+            float: right;
+        }
+
+        .add {
+            border-top: 2px solid #333;
+        }
+
+        footer {
+            margin-top: 2em;
+            page-break-inside: avoid;
+        }
+
+            footer .row {
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 1em;
+            }
+
+            footer p {
+                margin: 0.3em 0;
+                text-align: center;
+            }
+
+        /* Print styles */
+        @@media print {
+            html, body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                padding: 1cm;
+                display: flex;
+                flex-direction: column;
+                min-height: 100%;
+            }
+
+            article {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            footer {
+                page-break-inside: avoid;
+                margin-top: auto;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="row">
+            <img src="~/front/assets/images/bilal_logo.jpg" alt="Logo" style="width: 25%;">
+            <div style="flex: 1;"></div>
+            <img src="~/front/assets/images/petromin_logo.jpg" alt="Logo" style="width: 25%;">
+        </div>
+        <h1>Secondary Sales</h1>
+    </header>
+
+    <article>
+        <div>
+            <address>
+                <p><strong>Secondary Sales FROM : </strong>@ViewBag.d1 TO @ViewBag.d2</p>
+            </address>
+
+            <table class="meta">
+                <tr>
+                    <th>Date</th>
+                    <td>@DateTime.Now.ToString("dd-MM-yyyy")</td>
+                </tr>
+            </table>
+
+            <table class="inventory hh">
+                <thead>
+                    <tr>
+                        <th>DC #</th>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Order #
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Customer
+                        </th>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Qty
+                        </th>
+                        <th>
+                            Pack
+                        </th>
+                        <th>
+                            Total Ltr
+                        </th>
+                        <th>
+                            Price/Ltr
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        var tltr = Convert.ToInt32(item.Pack) * item.SsQty;
+                        <tr>
+                            <td>@item.Status</td>
+                            <td>@item.SsId</td>
+                            @{
+                                if (item.Type == "Drum")
+                                {
+                                    <td>
+                                        @item.SsOrderno
+                                    </td>
+                                }
+                                else if (item.Type == "Druml" || item.Type == "Pail")
+                                {
+                                    <td>
+                                        Loose-BE-@item.SsOrderno
+                                    </td>
+                                }
+                            }
+                            <td>
+                                @item.Day-@item.Month-@item.Year
+                            </td>
+                            @{
+                                if (item.CId == 0)
+                                {
+                                    <td>Bilal Associate</td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CIdNavigation.CName)
+                                    </td>
+                                }
+                            }
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PIdNavigation.PName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SsQty)
+                            </td>
+                            <td>@item.Pack</td>
+                            <td>@tltr</td>
+                            <td>@item.Price</td>
+                            <td>@item.TPrice</td>
+                        </tr>
+                    }
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>@ViewBag.tqt</td>
+                        <td></td>
+                        <td>@ViewBag.tltr</td>
+                        <td></td>
+                        <td>@ViewBag.tpr</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </article>
+
+</body>
+</html>

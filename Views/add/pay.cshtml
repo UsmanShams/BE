@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "po";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        @{
+            BentContext db = new BentContext();
+            var chk = db.pay_type.OrderBy(x => x.PaId).Last();
+            var vendor = db.Venders.ToList();
+            var cus = db.Customers.Where(x => x.CStatus == "Active").OrderBy(x => x.CName).ToList();
+            var bank = db.Bankstatements.ToList();
+        }
+        <div class="card-body">
+            @{
+                if (chk.PayerType == "Pet")
+                {
+                    <h1 style="color:black;">Add Vendor Payment</h1>
+                }
+                else if (chk.PayerType == "Cus")
+                {
+                    <h1 style="color:black;">Add Customer Payment</h1>
+                }
+            }
+            
+            <br />
+            <form class="forms-sample" asp-controller="add" asp-action="pay">
+                @{
+                    
+                    if(chk.PayerType == "Pet")
+                    {
+                        <div class="form-group row">
+                            <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Select Vendor</label>
+                            <div class="col-sm-9">
+                                <select name="vid" class="form-control">
+                                    @{
+                                        foreach(var item in vendor)
+                                        {
+                                            <option class="form-control" value="@item.VId">@item.VName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                    else if(chk.PayerType == "Cus")
+                    {
+                        <div class="form-group row">
+                            <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Select Customer</label>
+                            <div class="col-sm-9">
+                                <select name="cid" class="form-control">
+                                    @{
+                                        foreach (var item in cus)
+                                        {
+                                            <option class="form-control" value="@item.CId">@item.CName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                }
+
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Enter Amount</label>
+                    <div class="col-sm-9">
+                        <input name="amount" class="form-control"></input>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Bank</label>
+                    <div class="col-sm-9">
+                        <select name="bank" class="form-control">
+                            @{
+                                <option class="form-control" value="0">Cash</option>
+                                foreach (var item in bank)
+                                {
+                                    <option class="form-control" value="@item.BsId">@item.Bankname</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Description</label>
+                    <div class="col-sm-9">
+                        <input name="des" class="form-control"></input>
+                    </div>
+                </div>
+                @{
+                    if (TempData.ContainsKey("data"))
+                    {
+                        <span class="text-danger">@TempData["data"]</span>
+                    }
+                }
+                <br />
+                <button type="submit" class="btn btn-primary mr-2">Enter</button>
+            </form>
+        </div>
+    </div>
+</div>

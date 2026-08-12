@@ -1,0 +1,53 @@
+﻿@model be.Models.Product
+
+@{
+    ViewData["Title"] = "product";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Update Product</h4>
+            <form class="forms-sample" asp-controller="edit" asp-action="product">
+                <input type="hidden" asp-for="PId" />
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Code</label>
+                    <div class="col-sm-9">
+                        <input asp-for="PCode" class="form-control" placeholder="Add Code" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Product Name</label>
+                    <div class="col-sm-9">
+                        <input asp-for="PName" class="form-control" placeholder="Add Product Name" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputMobile" class="col-sm-3 col-form-label">Packaging</label>
+                    <div class="col-sm-9">
+                        <input asp-for="PPack" class="form-control" placeholder="Add Packaging" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Purchase Price</label>
+                    <div class="col-sm-9">
+                        <input asp-for="PPr" class="form-control" placeholder="Add Purchase Price" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Sale Price</label>
+                    <div class="col-sm-9">
+                        <input asp-for="PSp" class="form-control" placeholder="Add Sale Price" required />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="exampleInputConfirmPassword2" class="col-sm-3 col-form-label">Trade Discount</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Trade_disc" class="form-control" placeholder="Add Trade Discount" required />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

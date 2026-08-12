@@ -1,0 +1,29 @@
+﻿@model be.Models.OrderNo
+
+@{
+    ViewData["Title"] = "order";
+    Layout = "~/Views/Shared/home.cshtml";
+}
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add Customer For Order</h4>
+            <form class="forms-sample" asp-controller="add" asp-action="order">
+                @{
+                    if (TempData.ContainsKey("mess"))
+                    {
+                        <span class="text-danger">@TempData["mess"]</span>
+                    }
+                }
+                <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Customer</label>
+                    <div class="col-sm-9">
+                        <select asp-for="Customer" class="form-control" asp-items="@ViewBag.Cid" ></select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2" asp-route-id="@ViewBag.Cid">Add</button>
+            </form>
+        </div>
+    </div>
+</div>
